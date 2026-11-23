@@ -28,6 +28,15 @@ button:disabled{opacity:.5}
 #login{max-width:400px;margin:100px auto}
 .log{padding:11px 0;border-bottom:1px solid #29364a;font-size:13px;overflow-wrap:anywhere}
 #message{position:sticky;top:8px;background:#203047;padding:10px;border-radius:10px;display:none;z-index:5}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.statbox{background:#0b1422;border:1px solid #263348;border-radius:12px;padding:14px}
+.statbox .stat{font-size:22px;margin-top:7px}
+.user-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.user-tools input{flex:1;min-width:180px}
+.user-item{padding:13px 0;border-bottom:1px solid #29364a}
+.user-item:last-child{border-bottom:0}
+.user-item button{padding:8px 11px;font-size:11px}
+@media(max-width:520px){.wrap{padding:14px}.stats{grid-template-columns:1fr 1fr}.statbox{padding:11px}.statbox .stat{font-size:19px}}
 </style>
 </head>
 <body>
@@ -41,6 +50,17 @@ button:disabled{opacity:.5}
  <p class="small" id="loginError"></p>
 </div>
 <div id="panel">
+ <div class="card">
+  <h2>Обзор проекта</h2>
+  <div class="stats">
+   <div class="statbox"><div class="small">ВСЕГО ИГРОКОВ</div><div class="stat" id="statUsers">0</div></div>
+   <div class="statbox"><div class="small">АКТИВНЫЙ МАЙНИНГ</div><div class="stat" id="statMining">0</div></div>
+   <div class="statbox"><div class="small">СЕРВЕРОВ В АРЕНДЕ</div><div class="stat" id="statServers">0</div></div>
+   <div class="statbox"><div class="small">ВИРТУАЛЬНЫЙ БАЛАНС</div><div class="stat" id="statBalance">0</div></div>
+  </div>
+  <p class="small" id="storageStatus">Хранилище: проверка...</p>
+  <button class="gray" onclick="loadOverview()" style="width:100%">ОБНОВИТЬ ДАННЫЕ</button>
+ </div>
  <div class="card">
   <div class="small">СОСТОЯНИЕ СЕРВЕРА</div><div class="stat" id="serverStatus">ЗАГРУЗКА</div>
   <p class="small" id="serverNote">Текущий режим работы</p>
@@ -63,7 +83,10 @@ button:disabled{opacity:.5}
  <div class="card"><h2>Разблокировать пользователя</h2>
   <input id="unbanId" placeholder="ID пользователя"><button class="gray" style="width:100%;margin-top:8px" onclick="unbanUser()">РАЗБЛОКИРОВАТЬ</button>
  </div>
- <div class="card"><h2>Пользователи</h2><div id="users" class="small">Пока нет пользователей</div></div>
+ <div class="card"><h2>Поиск игроков</h2>
+  <div class="user-tools"><input id="userSearch" placeholder="Поиск по ID или статусу" oninput="renderUsers()"><button class="gray" onclick="document.getElementById('userSearch').value='';renderUsers()">СБРОС</button></div>
+  <div id="users" class="small">Пока нет пользователей</div>
+ </div>
  <div class="card"><h2>Заблокированные пользователи</h2><div id="bannedList" class="small">Список пуст</div></div>
  <div class="card"><h2>Журнал действий</h2><div id="logs" class="small">Действий пока нет</div>
   <button class="gray" style="margin-top:14px" onclick="clearLogs()">ОЧИСТИТЬ ЖУРНАЛ</button>
@@ -137,6 +160,19 @@ async function clearLogs(){
  catch(e){showMessage(e.message)}
 }
 function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function renderUsers(){
+ if(!overview)return;
+ const query=(document.getElementById("userSearch")?.value||"").trim().toLowerCase();
+ const users=overview.users||[];
+ const filtered=users.filter(u=>(String(u.id).toLowerCase().includes(query)||(u.banned?"заблокирован":"активен").includes(query)));
+ document.getElementById("users").innerHTML=filtered.length?filtered.map(u=>'<div class="user-item"><b>ID: '+esc(u.id)+'</b><br>Баланс: '+Number(u.balance||0).toFixed(4)+' виртуальных TON<br>Заработано: '+Number(u.earned||0).toFixed(4)+' · Серверов: '+(u.servers||[]).length+'<br>Статус: '+(u.banned?'ЗАБЛОКИРОВАН':'Активен')+' · Майнинг: '+(u.miningEnabled?'ВКЛ':'ВЫКЛ')+'<div class="row" style="margin-top:8px"><button class="gray" onclick="fillUser(\''+esc(u.id)+'\')">ВЫБРАТЬ ID</button></div></div>').join(""):"Игроки не найдены";
+}
+function fillUser(id){
+ document.getElementById("giveId").value=id;
+ document.getElementById("banId").value=id;
+ document.getElementById("unbanId").value=id;
+ showMessage("ID игрока добавлен в поля управления");
+}
 function render(){
  if(!overview)return;
  const status=overview.server.status;
@@ -144,7 +180,15 @@ function render(){
  el.style.color=status==="ONLINE"?"#62e9a1":status==="OFFLINE"?"#ff596b":"#ffc76b";
  document.getElementById("serverNote").textContent=overview.server.note||"Текущий режим работы";
  const users=overview.users||[];
- document.getElementById("users").innerHTML=users.length?users.map(u=>'<div class="log"><b>ID: '+esc(u.id)+'</b><br>Баланс: '+Number(u.balance||0).toFixed(4)+' виртуальных TON<br>Серверов: '+(u.servers||[]).length+' · '+(u.banned?'ЗАБЛОКИРОВАН':'Активен')+'</div>').join(""):"Пользователей пока нет";
+ const totalBalance=users.reduce((sum,u)=>sum+Number(u.balance||0),0);
+ const activeMining=users.filter(u=>u.miningEnabled&&!u.banned).length;
+ const totalServers=users.reduce((sum,u)=>sum+(u.servers||[]).length,0);
+ document.getElementById("statUsers").textContent=users.length;
+ document.getElementById("statMining").textContent=activeMining;
+ document.getElementById("statServers").textContent=totalServers;
+ document.getElementById("statBalance").textContent=totalBalance.toFixed(2)+" TON";
+ document.getElementById("storageStatus").textContent="Хранилище: "+(overview.storage==="postgresql"?"PostgreSQL":"только память");
+ renderUsers();
  const banned=users.filter(u=>u.banned);
  document.getElementById("bannedList").innerHTML=banned.length?banned.map(u=>'<div class="log"><b>ID: '+esc(u.id)+'</b><br>Причина: '+esc(u.banReason)+'</div>').join(""):"Список пуст";
  document.getElementById("logs").innerHTML=overview.logs?.length?overview.logs.map(l=>'<div class="log">'+esc(new Date(l.at).toLocaleString("ru-RU"))+' — <b>'+esc(l.action)+'</b><br>'+esc(JSON.stringify(l.details||{}))+'</div>').join(""):"Действий пока нет";
