@@ -26,18 +26,1122 @@ const TARIFFS = [
 let tariffs = TARIFFS.map(t => ({ ...t }));
 
 const NFT_CATALOG = [
-  { type:"snooper", name:"Snooper", rarity:"Обычный", icon:"🐶", art:"linear-gradient(145deg,#1c3d47,#72c9b7)" },
-  { type:"berry", name:"Berry Box", rarity:"Обычный", icon:"🫐", art:"linear-gradient(145deg,#301a56,#9b78ed)" },
-  { type:"candle", name:"Magic Candle", rarity:"Обычный", icon:"🕯️", art:"linear-gradient(145deg,#4c2940,#ff9d9d)" },
-  { type:"heart", name:"Heart Locket", rarity:"Редкий", icon:"💝", art:"linear-gradient(145deg,#6b193c,#ff6f9f)" },
-  { type:"ring", name:"Moon Ring", rarity:"Редкий", icon:"💍", art:"linear-gradient(145deg,#123d59,#69c8e8)" },
-  { type:"bunny", name:"Jelly Bunny", rarity:"Редкий", icon:"🐰", art:"linear-gradient(145deg,#244d43,#8fe3bb)" },
-  { type:"pepe", name:"Plush Friend", rarity:"Эпический", icon:"🐸", art:"linear-gradient(145deg,#163f36,#67db9c)" },
-  { type:"rocket", name:"Rocket", rarity:"Эпический", icon:"🚀", art:"linear-gradient(145deg,#33245f,#b59aff)" },
-  { type:"diamond", name:"Blue Diamond", rarity:"Эпический", icon:"💎", art:"linear-gradient(145deg,#123d67,#7ce4ff)" },
-  { type:"crown", name:"Golden Crown", rarity:"Легендарный", icon:"👑", art:"linear-gradient(145deg,#63400c,#ffd56d)" },
-  { type:"trophy", name:"Golden Trophy", rarity:"Легендарный", icon:"🏆", art:"linear-gradient(145deg,#5c3510,#ffca65)" },
-  { type:"planet", name:"Mini Planet", rarity:"Легендарный", icon:"🪐", art:"linear-gradient(145deg,#34205d,#bba1ff)" }
+  {
+    "type": "artisan_brick",
+    "name": "Artisan Brick",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/artisan_brick.webp",
+    "collectionSlug": "artisanbrick"
+  },
+  {
+    "type": "astral_shard",
+    "name": "Astral Shard",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/astral_shard.webp",
+    "collectionSlug": "astralshard"
+  },
+  {
+    "type": "bday_candle",
+    "name": "B-Day Candle",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/bday_candle.webp",
+    "collectionSlug": "bdaycandle"
+  },
+  {
+    "type": "berry_box",
+    "name": "Berry Box",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/berry_box.webp",
+    "collectionSlug": "berrybox"
+  },
+  {
+    "type": "big_year",
+    "name": "Big Year",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/big_year.webp",
+    "collectionSlug": "bigyear"
+  },
+  {
+    "type": "bling_binky",
+    "name": "Bling Binky",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/bling_binky.webp",
+    "collectionSlug": "blingbinky"
+  },
+  {
+    "type": "bonded_ring",
+    "name": "Bonded Ring",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/bonded_ring.webp",
+    "collectionSlug": "bondedring"
+  },
+  {
+    "type": "bow_tie",
+    "name": "Bow Tie",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/bow_tie.webp",
+    "collectionSlug": "bowtie"
+  },
+  {
+    "type": "bunny_muffin",
+    "name": "Bunny Muffin",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/bunny_muffin.webp",
+    "collectionSlug": "bunnymuffin"
+  },
+  {
+    "type": "candy_cane",
+    "name": "Candy Cane",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/candy_cane.webp",
+    "collectionSlug": "candycane"
+  },
+  {
+    "type": "clover_pin",
+    "name": "Clover Pin",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/clover_pin.webp",
+    "collectionSlug": "cloverpin"
+  },
+  {
+    "type": "cookie_heart",
+    "name": "Cookie Heart",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/cookie_heart.webp",
+    "collectionSlug": "cookieheart"
+  },
+  {
+    "type": "crystal_ball",
+    "name": "Crystal Ball",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/crystal_ball.webp",
+    "collectionSlug": "crystalball"
+  },
+  {
+    "type": "cupid_charm",
+    "name": "Cupid Charm",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/cupid_charm.webp",
+    "collectionSlug": "cupidcharm"
+  },
+  {
+    "type": "desk_calendar",
+    "name": "Desk Calendar",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/desk_calendar.webp",
+    "collectionSlug": "deskcalendar"
+  },
+  {
+    "type": "diamond_ring",
+    "name": "Diamond Ring",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/diamond_ring.webp",
+    "collectionSlug": "diamondring"
+  },
+  {
+    "type": "durovs_cap",
+    "name": "Durov’s Cap",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/durovs_cap.webp",
+    "collectionSlug": "durovscap"
+  },
+  {
+    "type": "easter_egg",
+    "name": "Easter Egg",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/easter_egg.webp",
+    "collectionSlug": "easteregg"
+  },
+  {
+    "type": "electric_skull",
+    "name": "Electric Skull",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/electric_skull.webp",
+    "collectionSlug": "electricskull"
+  },
+  {
+    "type": "eternal_candle",
+    "name": "Eternal Candle",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/eternal_candle.webp",
+    "collectionSlug": "eternalcandle"
+  },
+  {
+    "type": "eternal_rose",
+    "name": "Eternal Rose",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/eternal_rose.webp",
+    "collectionSlug": "eternalrose"
+  },
+  {
+    "type": "evil_eye",
+    "name": "Evil Eye",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/evil_eye.webp",
+    "collectionSlug": "evileye"
+  },
+  {
+    "type": "faith_amulet",
+    "name": "Faith Amulet",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/faith_amulet.webp",
+    "collectionSlug": "faithamulet"
+  },
+  {
+    "type": "flying_broom",
+    "name": "Flying Broom",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/flying_broom.webp",
+    "collectionSlug": "flyingbroom"
+  },
+  {
+    "type": "fresh_socks",
+    "name": "Fresh Socks",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/fresh_socks.webp",
+    "collectionSlug": "freshsocks"
+  },
+  {
+    "type": "gem_signet",
+    "name": "Gem Signet",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/gem_signet.webp",
+    "collectionSlug": "gemsignet"
+  },
+  {
+    "type": "genie_lamp",
+    "name": "Genie Lamp",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/genie_lamp.webp",
+    "collectionSlug": "genielamp"
+  },
+  {
+    "type": "ginger_cookie",
+    "name": "Ginger Cookie",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/ginger_cookie.webp",
+    "collectionSlug": "gingercookie"
+  },
+  {
+    "type": "hanging_star",
+    "name": "Hanging Star",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/hanging_star.webp",
+    "collectionSlug": "hangingstar"
+  },
+  {
+    "type": "happy_brownie",
+    "name": "Happy Brownie",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/happy_brownie.webp",
+    "collectionSlug": "happybrownie"
+  },
+  {
+    "type": "heart_locket",
+    "name": "Heart Locket",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/heart_locket.webp",
+    "collectionSlug": "heartlocket"
+  },
+  {
+    "type": "heroic_helmet",
+    "name": "Heroic Helmet",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/heroic_helmet.webp",
+    "collectionSlug": "heroichelmet"
+  },
+  {
+    "type": "hex_pot",
+    "name": "Hex Pot",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/hex_pot.webp",
+    "collectionSlug": "hexpot"
+  },
+  {
+    "type": "holiday_drink",
+    "name": "Holiday Drink",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/holiday_drink.webp",
+    "collectionSlug": "holidaydrink"
+  },
+  {
+    "type": "homemade_cake",
+    "name": "Homemade Cake",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/homemade_cake.webp",
+    "collectionSlug": "homemadecake"
+  },
+  {
+    "type": "hypno_lollipop",
+    "name": "Hypno Lollipop",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/hypno_lollipop.webp",
+    "collectionSlug": "hypnolollipop"
+  },
+  {
+    "type": "ice_cream",
+    "name": "Ice Cream",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/ice_cream.webp",
+    "collectionSlug": "icecream"
+  },
+  {
+    "type": "input_key",
+    "name": "Input Key",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/input_key.webp",
+    "collectionSlug": "inputkey"
+  },
+  {
+    "type": "instant_ramen",
+    "name": "Instant Ramen",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/instant_ramen.webp",
+    "collectionSlug": "instantramen"
+  },
+  {
+    "type": "ion_gem",
+    "name": "Ion Gem",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/ion_gem.webp",
+    "collectionSlug": "iongem"
+  },
+  {
+    "type": "ionic_dryer",
+    "name": "Ionic Dryer",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/ionic_dryer.webp",
+    "collectionSlug": "ionicdryer"
+  },
+  {
+    "type": "jackinthebox",
+    "name": "Jack-in-the-Box",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/jackinthebox.webp",
+    "collectionSlug": "jackinthebox"
+  },
+  {
+    "type": "jelly_bunny",
+    "name": "Jelly Bunny",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/jelly_bunny.webp",
+    "collectionSlug": "jellybunny"
+  },
+  {
+    "type": "jester_hat",
+    "name": "Jester Hat",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/jester_hat.webp",
+    "collectionSlug": "jesterhat"
+  },
+  {
+    "type": "jingle_bells",
+    "name": "Jingle Bells",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/jingle_bells.webp",
+    "collectionSlug": "jinglebells"
+  },
+  {
+    "type": "jolly_chimp",
+    "name": "Jolly Chimp",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/jolly_chimp.webp",
+    "collectionSlug": "jollychimp"
+  },
+  {
+    "type": "joyful_bundle",
+    "name": "Joyful Bundle",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/joyful_bundle.webp",
+    "collectionSlug": "joyfulbundle"
+  },
+  {
+    "type": "khabibs_papakha",
+    "name": "Khabib’s Papakha",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/khabibs_papakha.webp",
+    "collectionSlug": "khabibspapakha"
+  },
+  {
+    "type": "kissed_frog",
+    "name": "Kissed Frog",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/kissed_frog.webp",
+    "collectionSlug": "kissedfrog"
+  },
+  {
+    "type": "light_sword",
+    "name": "Light Sword",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/light_sword.webp",
+    "collectionSlug": "lightsword"
+  },
+  {
+    "type": "lol_pop",
+    "name": "Lol Pop",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/lol_pop.webp",
+    "collectionSlug": "lolpop"
+  },
+  {
+    "type": "loot_bag",
+    "name": "Loot Bag",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/loot_bag.webp",
+    "collectionSlug": "lootbag"
+  },
+  {
+    "type": "love_candle",
+    "name": "Love Candle",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/love_candle.webp",
+    "collectionSlug": "lovecandle"
+  },
+  {
+    "type": "love_potion",
+    "name": "Love Potion",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/love_potion.webp",
+    "collectionSlug": "lovepotion"
+  },
+  {
+    "type": "low_rider",
+    "name": "Low Rider",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/low_rider.webp",
+    "collectionSlug": "lowrider"
+  },
+  {
+    "type": "lunar_snake",
+    "name": "Lunar Snake",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/lunar_snake.webp",
+    "collectionSlug": "lunarsnake"
+  },
+  {
+    "type": "lush_bouquet",
+    "name": "Lush Bouquet",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/lush_bouquet.webp",
+    "collectionSlug": "lushbouquet"
+  },
+  {
+    "type": "mad_pumpkin",
+    "name": "Mad Pumpkin",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/mad_pumpkin.webp",
+    "collectionSlug": "madpumpkin"
+  },
+  {
+    "type": "magic_potion",
+    "name": "Magic Potion",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/magic_potion.webp",
+    "collectionSlug": "magicpotion"
+  },
+  {
+    "type": "mighty_arm",
+    "name": "Mighty Arm",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/mighty_arm.webp",
+    "collectionSlug": "mightyarm"
+  },
+  {
+    "type": "mini_oscar",
+    "name": "Mini Oscar",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/mini_oscar.webp",
+    "collectionSlug": "minioscar"
+  },
+  {
+    "type": "money_pot",
+    "name": "Money Pot",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/money_pot.webp",
+    "collectionSlug": "moneypot"
+  },
+  {
+    "type": "moon_pendant",
+    "name": "Moon Pendant",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/moon_pendant.webp",
+    "collectionSlug": "moonpendant"
+  },
+  {
+    "type": "mousse_cake",
+    "name": "Mousse Cake",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/mousse_cake.webp",
+    "collectionSlug": "moussecake"
+  },
+  {
+    "type": "nail_bracelet",
+    "name": "Nail Bracelet",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/nail_bracelet.webp",
+    "collectionSlug": "nailbracelet"
+  },
+  {
+    "type": "neko_helmet",
+    "name": "Neko Helmet",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/neko_helmet.webp",
+    "collectionSlug": "nekohelmet"
+  },
+  {
+    "type": "party_sparkler",
+    "name": "Party Sparkler",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/party_sparkler.webp",
+    "collectionSlug": "partysparkler"
+  },
+  {
+    "type": "perfume_bottle",
+    "name": "Perfume Bottle",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/perfume_bottle.webp",
+    "collectionSlug": "perfumebottle"
+  },
+  {
+    "type": "pet_snake",
+    "name": "Pet Snake",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/pet_snake.webp",
+    "collectionSlug": "petsnake"
+  },
+  {
+    "type": "plush_pepe",
+    "name": "Plush Pepe",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/plush_pepe.webp",
+    "collectionSlug": "plushpepe"
+  },
+  {
+    "type": "precious_peach",
+    "name": "Precious Peach",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/precious_peach.webp",
+    "collectionSlug": "preciouspeach"
+  },
+  {
+    "type": "pretty_posy",
+    "name": "Pretty Posy",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/pretty_posy.webp",
+    "collectionSlug": "prettyposy"
+  },
+  {
+    "type": "record_player",
+    "name": "Record Player",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/record_player.webp",
+    "collectionSlug": "recordplayer"
+  },
+  {
+    "type": "restless_jar",
+    "name": "Restless Jar",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/restless_jar.webp",
+    "collectionSlug": "restlessjar"
+  },
+  {
+    "type": "sakura_flower",
+    "name": "Sakura Flower",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/sakura_flower.webp",
+    "collectionSlug": "sakuraflower"
+  },
+  {
+    "type": "santa_hat",
+    "name": "Santa Hat",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/santa_hat.webp",
+    "collectionSlug": "santahat"
+  },
+  {
+    "type": "scared_cat",
+    "name": "Scared Cat",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/scared_cat.webp",
+    "collectionSlug": "scaredcat"
+  },
+  {
+    "type": "sharp_tongue",
+    "name": "Sharp Tongue",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/sharp_tongue.webp",
+    "collectionSlug": "sharptongue"
+  },
+  {
+    "type": "signet_ring",
+    "name": "Signet Ring",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/signet_ring.webp",
+    "collectionSlug": "signetring"
+  },
+  {
+    "type": "skull_flower",
+    "name": "Skull Flower",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/skull_flower.webp",
+    "collectionSlug": "skullflower"
+  },
+  {
+    "type": "sky_stilettos",
+    "name": "Sky Stilettos",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/sky_stilettos.webp",
+    "collectionSlug": "skystilettos"
+  },
+  {
+    "type": "sleigh_bell",
+    "name": "Sleigh Bell",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/sleigh_bell.webp",
+    "collectionSlug": "sleighbell"
+  },
+  {
+    "type": "snake_box",
+    "name": "Snake Box",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/snake_box.webp",
+    "collectionSlug": "snakebox"
+  },
+  {
+    "type": "snoop_cigar",
+    "name": "Snoop Cigar",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/snoop_cigar.webp",
+    "collectionSlug": "snoopcigar"
+  },
+  {
+    "type": "snoop_dogg",
+    "name": "Snoop Dogg",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/snoop_dogg.webp",
+    "collectionSlug": "snoopdogg"
+  },
+  {
+    "type": "snow_globe",
+    "name": "Snow Globe",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/snow_globe.webp",
+    "collectionSlug": "snowglobe"
+  },
+  {
+    "type": "snow_mittens",
+    "name": "Snow Mittens",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/snow_mittens.webp",
+    "collectionSlug": "snowmittens"
+  },
+  {
+    "type": "spiced_wine",
+    "name": "Spiced Wine",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/spiced_wine.webp",
+    "collectionSlug": "spicedwine"
+  },
+  {
+    "type": "spring_basket",
+    "name": "Spring Basket",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/spring_basket.webp",
+    "collectionSlug": "springbasket"
+  },
+  {
+    "type": "spy_agaric",
+    "name": "Spy Agaric",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/spy_agaric.webp",
+    "collectionSlug": "spyagaric"
+  },
+  {
+    "type": "star_notepad",
+    "name": "Star Notepad",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/star_notepad.webp",
+    "collectionSlug": "starnotepad"
+  },
+  {
+    "type": "stellar_rocket",
+    "name": "Stellar Rocket",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/stellar_rocket.webp",
+    "collectionSlug": "stellarrocket"
+  },
+  {
+    "type": "swag_bag",
+    "name": "Swag Bag",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/swag_bag.webp",
+    "collectionSlug": "swagbag"
+  },
+  {
+    "type": "swiss_watch",
+    "name": "Swiss Watch",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/swiss_watch.webp",
+    "collectionSlug": "swisswatch"
+  },
+  {
+    "type": "tama_gadget",
+    "name": "Tama Gadget",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/tama_gadget.webp",
+    "collectionSlug": "tamagadget"
+  },
+  {
+    "type": "top_hat",
+    "name": "Top Hat",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/top_hat.webp",
+    "collectionSlug": "tophat"
+  },
+  {
+    "type": "toy_bear",
+    "name": "Toy Bear",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/toy_bear.webp",
+    "collectionSlug": "toybear"
+  },
+  {
+    "type": "trapped_heart",
+    "name": "Trapped Heart",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/trapped_heart.webp",
+    "collectionSlug": "trappedheart"
+  },
+  {
+    "type": "ufc_strike",
+    "name": "UFC Strike",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/ufc_strike.webp",
+    "collectionSlug": "ufcstrike"
+  },
+  {
+    "type": "valentine_box",
+    "name": "Valentine Box",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/valentine_box.webp",
+    "collectionSlug": "valentinebox"
+  },
+  {
+    "type": "vintage_cigar",
+    "name": "Vintage Cigar",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/vintage_cigar.webp",
+    "collectionSlug": "vintagecigar"
+  },
+  {
+    "type": "voodoo_doll",
+    "name": "Voodoo Doll",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/voodoo_doll.webp",
+    "collectionSlug": "voodoodoll"
+  },
+  {
+    "type": "westside_sign",
+    "name": "Westside Sign",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/westside_sign.webp",
+    "collectionSlug": "westsidesign"
+  },
+  {
+    "type": "whip_cupcake",
+    "name": "Whip Cupcake",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/whip_cupcake.webp",
+    "collectionSlug": "whipcupcake"
+  },
+  {
+    "type": "winter_wreath",
+    "name": "Winter Wreath",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/winter_wreath.webp",
+    "collectionSlug": "winterwreath"
+  },
+  {
+    "type": "witch_hat",
+    "name": "Witch Hat",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/witch_hat.webp",
+    "collectionSlug": "witchhat"
+  },
+  {
+    "type": "xmas_stocking",
+    "name": "Xmas Stocking",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/xmas_stocking.webp",
+    "collectionSlug": "xmasstocking"
+  },
+  {
+    "type": "timeless_book",
+    "name": "Timeless Book",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/timeless_book.webp",
+    "collectionSlug": "timelessbook"
+  },
+  {
+    "type": "vice_cream",
+    "name": "Vice Cream",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/vice_cream.webp",
+    "collectionSlug": "vicecream"
+  },
+  {
+    "type": "victory_medal",
+    "name": "Victory Medal",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/victory_medal.webp",
+    "collectionSlug": "victorymedal"
+  },
+  {
+    "type": "pool_float",
+    "name": "Pool Float",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/pool_float.webp",
+    "collectionSlug": "poolfloat"
+  },
+  {
+    "type": "surge_board",
+    "name": "Surge Board",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/surge_board.webp",
+    "collectionSlug": "surgeboard"
+  },
+  {
+    "type": "chill_flame",
+    "name": "Chill Flame",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/chill_flame.webp",
+    "collectionSlug": "chillflame"
+  },
+  {
+    "type": "mood_pack",
+    "name": "Mood Pack",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/mood_pack.webp",
+    "collectionSlug": "moodpack"
+  },
+  {
+    "type": "rare_bird",
+    "name": "Rare Bird",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/rare_bird.webp",
+    "collectionSlug": "rarebird"
+  },
+  {
+    "type": "durovs_glasses",
+    "name": "Durov’s Glasses",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/durovs_glasses.webp",
+    "collectionSlug": "durovsglasses"
+  },
+  {
+    "type": "liberty_figure",
+    "name": "Liberty Figure",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/liberty_figure.webp",
+    "collectionSlug": "libertyfigure"
+  },
+  {
+    "type": "triple_meow",
+    "name": "Triple Meow",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/triple_meow.webp",
+    "collectionSlug": "triplemeow"
+  },
+  {
+    "type": "algorithm_cup",
+    "name": "Algorithm Cup",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/algorithm_cup.webp",
+    "collectionSlug": "algorithmcup"
+  },
+  {
+    "type": "intelligence_cup",
+    "name": "Intelligence Cup",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/intelligence_cup.webp",
+    "collectionSlug": "intelligencecup"
+  },
+  {
+    "type": "white_gilded",
+    "name": "White Gilded",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/white_gilded.webp",
+    "collectionSlug": "whitegilded"
+  },
+  {
+    "type": "the_creation",
+    "name": "The Creation",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/the_creation.webp",
+    "collectionSlug": "thecreation"
+  },
+  {
+    "type": "digital_rain",
+    "name": "Digital Rain",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/digital_rain.webp",
+    "collectionSlug": "digitalrain"
+  },
+  {
+    "type": "ghostface",
+    "name": "Ghostface",
+    "rarity": "Коллекционный",
+    "icon": "",
+    "art": "",
+    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/ghostface.webp",
+    "collectionSlug": "ghostface"
+  }
 ];
 const marketListings = [];
 const marketSales = [];
@@ -46,7 +1150,7 @@ function createNft(type) {
   const gift = NFT_CATALOG.find(item => item.type === type) || NFT_CATALOG[0];
   return {
     id: crypto.randomUUID(), type: gift.type, name: gift.name, rarity: gift.rarity,
-    icon: gift.icon, art: gift.art, serial: Math.floor(1000 + Math.random() * 8999),
+    icon: gift.icon, art: gift.art, image: gift.image, serial: Math.floor(1000 + Math.random() * 8999),
     mintedAt: new Date().toISOString()
   };
 }
