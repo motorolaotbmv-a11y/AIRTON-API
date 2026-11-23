@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#000">
+<title>AIRTON</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#000;color:white;font-family:Arial,sans-serif}
+button{cursor:pointer;font-family:inherit}
+.app{max-width:520px;margin:auto;padding:12px 15px 110px}
+header{display:flex;justify-content:space-between;align-items:center;padding:9px 5px 22px}
+.logo{font-size:25px;font-weight:900}.logo span{color:#a66aff}
+.status{background:#29292e;border-radius:25px;padding:10px 13px;color:#aaa;font-size:12px}
+.card{background:#1c1c1f;border-radius:25px;padding:19px;margin-bottom:15px}
+.gray{color:#999}.balance{font-size:36px;font-weight:800;margin:8px 0 12px}.balance small{font-size:19px;color:#999}
+.account-id{font-size:11px;color:#777;overflow-wrap:anywhere;margin-bottom:15px}
+.actions{display:flex;gap:9px}.actions button{flex:1;border:0;border-radius:30px;background:#303035;color:#168cff;padding:13px 3px;font-size:14px;font-weight:bold}.actions .primary{background:#168cff;color:white}
+.page{display:none}.page.active{display:block}
+.fanbox{display:flex;justify-content:center;margin:30px 0 20px}
+.fan{width:min(82vw,360px);aspect-ratio:1;filter:drop-shadow(0 12px 22px #7125c9)}.fan svg{width:100%;height:100%}
+.rotor{transform-origin:180px 180px}.running .rotor{animation:rotate 1.15s linear infinite}@keyframes rotate{to{transform:rotate(360deg)}}
+.fan-number{text-align:center;font-size:32px;font-weight:800;overflow-wrap:anywhere}.fan-number small{font-size:18px;color:#999}
+.fan-status{text-align:center;color:#aaa;font-size:15px;margin-top:13px}.fan-sub{text-align:center;color:#777;font-size:12px;margin-top:8px}
+#mineButton{width:100%;height:60px;margin-top:22px;border:0;border-radius:18px;background:linear-gradient(100deg,#168cff,#7545ff);color:white;font-size:17px;font-weight:900;box-shadow:0 0 25px #397aff55}
+#mineButton.stop{background:linear-gradient(100deg,#a52b42,#e34b65)}
+.mining-info{display:flex;justify-content:space-between;margin-top:20px;font-size:13px}
+h1{font-size:34px;margin:15px 5px 10px}.desc{color:#999;line-height:1.5;margin:0 5px 24px}
+.server-card{background:#1c1c1f;border-radius:20px;padding:17px;margin:13px 0;border:1px solid #29292e}
+.server-card h3{font-size:18px;margin:0 0 13px}.price{font-size:26px;font-weight:800}
+.server-card p{color:#999;font-size:13px;margin:9px 0}.stock{font-size:12px;color:#999}.income{color:#65bdff;font-weight:bold}
+.buy{width:100%;padding:15px;border:0;border-radius:15px;background:#168cff;color:white;font-size:15px;font-weight:bold;margin-top:13px}
+.buy:disabled{background:#343439;color:#888}.secondary{background:#061b30;color:#168cff}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.section-label{font-size:13px;color:#999;margin:26px 5px 12px}.timer{color:#ba8aff!important}
+.empty{text-align:center;color:#999;background:#1c1c1f;border-radius:20px;padding:30px 10px}
+.task{padding:15px 0;border-top:1px solid #333}.task:first-child{border:0}
+.task button{border:0;background:#174b70;color:#bceaff;padding:10px 14px;border-radius:12px}
+.nav{position:fixed;z-index:20;bottom:0;left:10px;right:10px;max-width:500px;margin:auto;background:#202023ed;border:1px solid #45454b;border-radius:45px;display:grid;grid-template-columns:repeat(5,1fr);padding:8px 4px calc(8px + env(safe-area-inset-bottom));backdrop-filter:blur(20px)}
+.nav button{border:0;background:none;color:#aaa;border-radius:35px;padding:8px 1px;font-size:11px;font-weight:bold}.nav button b{display:block;font-size:23px;margin-bottom:5px}
+.nav button.active{color:#168cff;background:#30303a}
+.notice{text-align:center;color:#666;font-size:10px;line-height:1.5;margin:25px 5px}
+.toast{position:fixed;z-index:50;bottom:95px;left:50%;transform:translateX(-50%);background:#292936;border:1px solid #62517c;border-radius:14px;padding:13px 18px;font-size:13px;display:none;max-width:90%;white-space:normal;text-align:center}
+.toast.show{display:block}
+input{width:100%;padding:13px;background:#303035;border:1px solid #444;border-radius:12px;color:white;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="app">
+<header><div class="logo">AIRTON <span>🟣</span></div><div class="status" id="topStatus">● ПОДКЛЮЧЕНИЕ</div></header>
+<section class="page active" id="mining">
+ <div class="card">
+  <div class="gray">Баланс</div><div class="balance"><span id="balance">0.0000</span> <small>вирт. TON</small></div>
+  <div class="account-id">ID аккаунта: <span id="accountId">...</span></div>
+  <div class="actions">
+   <button class="primary" onclick="toast('Пополнение не подключено')">Пополнить</button>
+   <button onclick="toast('Вывод не подключён')">Вывести</button>
+   <button onclick="toast('Чеки появятся позже')">Чек</button>
+  </div>
+ </div>
+ <div class="fanbox"><div class="fan" id="fan">
+  <svg viewBox="0 0 360 360">
+   <defs>
+    <radialGradient id="body" cx="35%" cy="28%"><stop offset="0" stop-color="#b87cff"/><stop offset=".45" stop-color="#6525d6"/><stop offset=".8" stop-color="#23075d"/><stop offset="1" stop-color="#10051f"/></radialGradient>
+    <linearGradient id="blade" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e3caff"/><stop offset=".3" stop-color="#a66aff"/><stop offset=".7" stop-color="#702be0"/><stop offset="1" stop-color="#26076e"/></linearGradient>
+    <path id="bladeShape" d="M180 178 C135 153 106 91 139 42 C151 23 174 18 194 29 C165 61 164 113 180 178Z" fill="url(#blade)" stroke="#d7b8ff" stroke-width="4"/>
+   </defs>
+   <circle cx="180" cy="180" r="175" fill="#17121f"/><circle cx="180" cy="180" r="163" fill="url(#body)" stroke="#a46aff" stroke-width="5"/><circle cx="180" cy="180" r="151" fill="#1b0749" stroke="#d0a0ff" stroke-width="3"/>
+   <g class="rotor"><use href="#bladeShape"/><use href="#bladeShape" transform="rotate(45 180 180)"/><use href="#bladeShape" transform="rotate(90 180 180)"/><use href="#bladeShape" transform="rotate(135 180 180)"/><use href="#bladeShape" transform="rotate(180 180 180)"/><use href="#bladeShape" transform="rotate(225 180 180)"/><use href="#bladeShape" transform="rotate(270 180 180)"/><use href="#bladeShape" transform="rotate(315 180 180)"/><circle cx="180" cy="180" r="40" fill="#260765" stroke="#d6b1ff" stroke-width="5"/><circle cx="180" cy="180" r="30" fill="url(#body)" stroke="#a86cff" stroke-width="3"/><path d="M165 164 L180 198 L195 164 L180 164 Z" fill="none" stroke="white" stroke-width="5"/></g>
+   <circle cx="180" cy="180" r="158" fill="none" stroke="#b88bff" stroke-width="2"/><circle cx="180" cy="180" r="173" fill="none" stroke="#55406d" stroke-width="5"/>
+  </svg>
+ </div></div>
+ <div class="fan-number"><span id="earned">0.0000000000</span> <small>вирт. TON</small></div>
+ <div class="fan-status" id="fanStatus">Майнинг не запущен</div><div class="fan-sub" id="fanSub">Арендуйте сервер, чтобы начать</div>
+ <button id="mineButton" onclick="toggleMining()">⚡ ЗАПУСТИТЬ МАЙНИНГ</button>
+ <div class="card mining-info">
+  <div><span class="gray">Доход / сутки</span><br><b id="income">0 TON</b></div>
+  <div><span class="gray">Серверы</span><br><b id="count">0</b></div>
+  <div><span class="gray">Мощность</span><br><b id="power">0 GH/s</b></div>
+ </div>
+</section>
+<section class="page" id="servers">
+ <h1>Мои серверы</h1><div class="desc">Срок аренды — 14 дней.</div>
+ <div class="card"><div class="row"><b id="power2">0 GH/s</b><span>⚡</span></div><p class="gray">Общая мощность фермы</p></div>
+ <div class="section-label">АРЕНДОВАННЫЕ СЕРВЕРЫ</div><div id="myServers"></div>
+ <button class="buy secondary" onclick="show('shop')">Арендовать сервер</button>
+</section>
+<section class="page" id="friends">
+ <h1>Друзья</h1><div class="desc">Приглашай друзей в AIRTON.</div>
+ <div class="card"><h2>Реферальная система скоро появится</h2><span class="gray">ID аккаунта: <span id="friendId"></span></span></div>
+ <div class="card"><b>Твоя ссылка</b><input id="ref" readonly value="https://t.me/AIRTON_bot"><button class="buy" onclick="copyRef()">Скопировать</button></div>
+</section>
+<section class="page" id="missions">
+ <h1>Миссии</h1><div class="desc">Задания и виртуальные награды.</div>
+ <div class="card">
+  <div class="task row"><div><b>Первый вход</b><p class="gray">Награда: 0.1 виртуального TON</p></div><button id="m1" onclick="mission(1)">Получить</button></div>
+  <div class="task row"><div><b>Первая аренда</b><p class="gray">Награда: 0.2 виртуального TON</p></div><button id="m2" onclick="mission(2)">Получить</button></div>
+ </div>
+</section>
+<section class="page" id="shop"><h1>Магазин</h1><div class="desc">Выбирай сервер. Аренда — 14 дней.</div><div id="catalog"></div></section>
+<div class="notice">Демонстрационный режим AIRTON. Баланс виртуальный, не является реальными TON. Реальный майнинг, платежи и выплаты не подключены. Данные демо-сервера могут сбрасываться.</div>
+</div>
+<nav class="nav">
+ <button class="active" data-id="mining" onclick="show('mining')"><b>◎</b>Майнинг</button>
+ <button data-id="servers" onclick="show('servers')"><b>ϟ</b>Серверы</button>
+ <button data-id="friends" onclick="show('friends')"><b>♟</b>Друзья</button>
+ <button data-id="missions" onclick="show('missions')"><b>◎</b>Миссии</button>
+ <button data-id="shop" onclick="show('shop')"><b>▣</b>Магазин</button>
+</nav>
+<div class="toast" id="toast"></div>
+<script>
+const API=location.origin;
+const tg=window.Telegram?.WebApp;
+if(tg){tg.ready();tg.expand();try{tg.requestFullscreen?.()}catch(e){}}
+function makeId(){
+ let id=localStorage.getItem("airton_account_id");
+ if(!id){id="guest_"+(crypto.randomUUID?crypto.randomUUID().replace(/-/g,""):Math.random().toString(36).slice(2)+Date.now());localStorage.setItem("airton_account_id",id)}
+ return id;
+}
+const userId=tg?.initDataUnsafe?.user?.id?String(tg.initDataUnsafe.user.id):makeId();
+let data=null,config=null,refreshBusy=false;
+document.getElementById("accountId").textContent=userId;
+document.getElementById("friendId").textContent=userId;
+async function api(path,options={}){
+ const response=await fetch(API+path,{...options,headers:{"Content-Type":"application/json",...(options.headers||{})}});
+ const result=await response.json().catch(()=>({ok:false,error:"Сервер вернул неверный ответ"}));
+ if(!response.ok||result.ok===false)throw new Error(result.error||("Ошибка "+response.status));
+ return result;
+}
+function toast(text){
+ const el=document.getElementById("toast");el.textContent=text;el.classList.add("show");
+ clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.classList.remove("show"),2500);
+}
+function show(id){
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+ document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.id===id));
+ if(id==="servers")renderServers();if(id==="shop")renderShop();window.scrollTo(0,0);
+}
+function active(){return (data?.servers||[]).filter(s=>s.end>Date.now())}
+function income(){return data?.income||0}
+function power(){return data?.power||0}
+function render(){
+ if(!data||!config)return;
+ document.getElementById("balance").textContent=Number(data.balance||0).toFixed(4);
+ document.getElementById("earned").textContent=Number(data.earned||0).toFixed(10);
+ document.getElementById("income").textContent=income().toFixed(4)+" TON";
+ document.getElementById("count").textContent=data.count||0;
+ document.getElementById("power").textContent=power()+" GH/s";
+ document.getElementById("power2").textContent=power()+" GH/s";
+ document.getElementById("topStatus").textContent=config.serverStatus==="ONLINE"?"● ONLINE":config.serverStatus==="OFFLINE"?"● OFFLINE":"● ТЕХРАБОТЫ";
+ document.getElementById("topStatus").style.color=config.serverStatus==="ONLINE"?"#65e6a5":"#ff6879";
+ const running=!!data.miningEnabled&&active().length>0&&config.serverStatus==="ONLINE";
+ document.getElementById("fan").classList.toggle("running",running);
+ document.getElementById("fanStatus").textContent=running?"Майнинг запущен":"Майнинг не запущен";
+ document.getElementById("fanSub").textContent=data.banned?"Аккаунт заблокирован":config.serverStatus!=="ONLINE"?"Сервер временно недоступен":running?"Ваши серверы работают":"Арендуйте сервер, чтобы начать";
+ const btn=document.getElementById("mineButton");
+ btn.textContent=data.miningEnabled?"■ ОСТАНОВИТЬ МАЙНИНГ":"⚡ ЗАПУСТИТЬ МАЙНИНГ";
+ btn.classList.toggle("stop",!!data.miningEnabled);
+ btn.disabled=!!data.banned||config.serverStatus!=="ONLINE"&&!data.miningEnabled;
+ (data.missions||[false,false]).forEach((v,i)=>{const b=document.getElementById("m"+(i+1));b.textContent=v?"Получено":"Получить";b.disabled=!!v});
+ if(document.getElementById("servers").classList.contains("active"))renderServers();
+}
+async function refresh(){
+ if(refreshBusy)return;refreshBusy=true;
+ try{
+  const [c,u]=await Promise.all([api("/api/config"),api("/api/user/"+encodeURIComponent(userId))]);
+  config=c;data=u.user;render();
+  if(data.banned)toast("Аккаунт заблокирован: "+(data.banReason||""));
+ }catch(e){document.getElementById("topStatus").textContent="● НЕТ СВЯЗИ";document.getElementById("topStatus").style.color="#ff6879";toast(e.message)}
+ finally{refreshBusy=false}
+}
+async function toggleMining(){
+ if(!data)return;
+ try{
+  const result=await api("/api/user/"+encodeURIComponent(userId)+"/mining",{method:"POST",body:JSON.stringify({enabled:!data.miningEnabled})});
+  data=result.user;render();toast(data.miningEnabled?"Майнинг запущен":"Майнинг остановлен");
+ }catch(e){toast(e.message);await refresh()}
+}
+function renderShop(){
+ if(!config)return;
+ const tariffs=config.tariffs||[];
+ document.getElementById("catalog").innerHTML=tariffs.map((t,i)=>{
+  const ready=t.income!==null;const stock=t.stock;
+  return '<div class="server-card"><div class="row"><h3>Сервер '+(i+1)+'</h3><span class="stock">Осталось: '+stock+'</span></div><div class="price">'+t.price+' TON</div><p>Доход за сутки: <b class="income">'+(ready?t.income+" TON":"Настраивается")+'</b></p><p>Срок аренды: 14 дней</p><p>Мощность: '+t.power+' GH/s</p><button class="buy" '+(stock<=0||!ready||data?.banned||config.serverStatus!=="ONLINE"?"disabled":"")+' onclick="rent('+i+')">'+(stock<=0?"Нет в наличии":ready?"Арендовать":"Скоро")+'</button></div>';
+ }).join("");
+}
+async function rent(i){
+ try{
+  const result=await api("/api/user/"+encodeURIComponent(userId)+"/rent",{method:"POST",body:JSON.stringify({tariffIndex:i})});
+  data=result.user;config.tariffs=result.config.tariffs;render();renderShop();toast("Сервер арендован на 14 дней");
+ }catch(e){toast(e.message);await refresh();renderShop()}
+}
+function renderServers(){
+ const list=active();
+ document.getElementById("myServers").innerHTML=list.length?list.map(s=>{
+  const left=s.end-Date.now(),d=Math.floor(left/86400000),h=Math.floor(left%86400000/3600000),m=Math.floor(left%3600000/60000);
+  return '<div class="server-card"><div class="row"><b>Сервер '+s.price+' TON</b><span style="color:#65e6a5">● Работает</span></div><p>Доход: <b class="income">'+s.income+' TON/сутки</b></p><p>Мощность: '+s.power+' GH/s</p><p class="timer">Осталось: '+d+' д. '+h+' ч. '+m+' мин.</p></div>';
+ }).join(""):'<div class="empty">У вас пока нет активных серверов</div>';
+}
+async function mission(n){
+ try{const result=await api("/api/user/"+encodeURIComponent(userId)+"/mission",{method:"POST",body:JSON.stringify({number:n})});data=result.user;render();toast("Виртуальная награда получена")}
+ catch(e){toast(e.message);await refresh()}
+}
+function copyRef(){
+ const input=document.getElementById("ref");input.select();
+ if(navigator.clipboard)navigator.clipboard.writeText(input.value).then(()=>toast("Ссылка скопирована")).catch(()=>toast("Не удалось скопировать"));
+ else{document.execCommand("copy");toast("Скопировано")}
+}
+refresh().then(renderShop);
+setInterval(refresh,2500);
+setInterval(()=>{if(document.getElementById("servers").classList.contains("active"))renderServers()},1000);
+</script>
+</body>
+</html>
