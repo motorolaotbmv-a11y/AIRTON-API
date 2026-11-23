@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080b12">
+<title>AIRTON — Admin Panel</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#080b12;color:#eef3ff;font-family:Arial,sans-serif}
+.wrap{max-width:900px;margin:auto;padding:22px}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}
+.logo{font-size:25px;font-weight:900;letter-spacing:3px;color:#65e6ff}
+.tag{font-size:11px;color:#8996aa}
+.card{background:#111827;border:1px solid #263348;border-radius:16px;padding:19px;margin:14px 0}
+h2{font-size:17px;margin:0 0 16px}
+input{width:100%;padding:14px;margin:7px 0;background:#080e19;color:white;border:1px solid #34445d;border-radius:9px;outline:none}
+button{padding:13px 16px;border:0;border-radius:9px;background:#55dafa;color:#07121b;font-weight:800;cursor:pointer}
+button:active{transform:scale(.97)}
+button:disabled{opacity:.5}
+.red{background:#ff596b;color:white}
+.gray{background:#35445b;color:white}
+.row{display:flex;gap:9px;flex-wrap:wrap}
+.row button{flex:1}
+.small{font-size:12px;color:#8492a8}
+.stat{font-size:25px;font-weight:800}
+#panel{display:none}
+#login{max-width:400px;margin:100px auto}
+.log{padding:11px 0;border-bottom:1px solid #29364a;font-size:13px;overflow-wrap:anywhere}
+#message{position:sticky;top:8px;background:#203047;padding:10px;border-radius:10px;display:none;z-index:5}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><div><div class="logo">AIRTON</div><div class="tag">CONTROL PANEL / ADMINISTRATOR</div></div><div class="tag">PRIVATE ACCESS</div></header>
+<div id="message"></div>
+<div id="login" class="card">
+ <h2>Вход администратора</h2>
+ <input id="pass" type="password" placeholder="Секрет администратора" autocomplete="current-password">
+ <button id="loginBtn" style="width:100%" onclick="login()">ВОЙТИ</button>
+ <p class="small" id="loginError"></p>
+</div>
+<div id="panel">
+ <div class="card">
+  <div class="small">СОСТОЯНИЕ СЕРВЕРА</div><div class="stat" id="serverStatus">ЗАГРУЗКА</div>
+  <p class="small" id="serverNote">Текущий режим работы</p>
+  <div class="row">
+   <button onclick="setStatus('ONLINE')">ONLINE</button>
+   <button class="gray" onclick="setStatus('MAINTENANCE')">ТЕХРАБОТЫ</button>
+   <button class="red" onclick="setStatus('OFFLINE')">OFFLINE</button>
+  </div>
+ </div>
+ <div class="card"><h2>Выдать виртуальные TON</h2>
+  <input id="giveId" placeholder="ID пользователя">
+  <input id="giveAmount" type="number" min="0.01" step="0.01" placeholder="Количество">
+  <input id="giveReason" placeholder="Причина начисления">
+  <button style="width:100%" onclick="giveTon()">ВЫДАТЬ</button>
+ </div>
+ <div class="card"><h2>Заблокировать пользователя</h2>
+  <input id="banId" placeholder="ID пользователя"><input id="banReason" placeholder="Причина блокировки">
+  <button class="red" style="width:100%" onclick="banUser()">ЗАБЛОКИРОВАТЬ</button>
+ </div>
+ <div class="card"><h2>Разблокировать пользователя</h2>
+  <input id="unbanId" placeholder="ID пользователя"><button class="gray" style="width:100%;margin-top:8px" onclick="unbanUser()">РАЗБЛОКИРОВАТЬ</button>
+ </div>
+ <div class="card"><h2>Пользователи</h2><div id="users" class="small">Пока нет пользователей</div></div>
+ <div class="card"><h2>Заблокированные пользователи</h2><div id="bannedList" class="small">Список пуст</div></div>
+ <div class="card"><h2>Журнал действий</h2><div id="logs" class="small">Действий пока нет</div>
+  <button class="gray" style="margin-top:14px" onclick="clearLogs()">ОЧИСТИТЬ ЖУРНАЛ</button>
+ </div>
+ <button class="red" style="width:100%;margin:12px 0" onclick="logout()">ВЫЙТИ ИЗ ПАНЕЛИ</button>
+</div>
+</div>
+<script>
+const API = location.origin;
+let token = sessionStorage.getItem("airton_admin_token") || "";
+let overview = null;
+function showMessage(text){const el=document.getElementById("message");el.textContent=text;el.style.display="block";setTimeout(()=>el.style.display="none",3500)}
+async function request(path, options={}) {
+ const headers={"Content-Type":"application/json",...(options.headers||{})};
+ if(token) headers.Authorization="Bearer "+token;
+ const response=await fetch(API+path,{...options,headers});
+ const result=await response.json().catch(()=>({ok:false,error:"Ответ сервера не JSON"}));
+ if(!response.ok||result.ok===false) throw new Error(result.error||("Ошибка "+response.status));
+ return result;
+}
+async function login(){
+ const secret=document.getElementById("pass").value;
+ const error=document.getElementById("loginError");
+ error.textContent="";
+ try{
+  const result=await request("/api/admin/login",{method:"POST",body:JSON.stringify({secret})});
+  token=result.token;sessionStorage.setItem("airton_admin_token",token);
+  document.getElementById("login").style.display="none";
+  document.getElementById("panel").style.display="block";
+  document.getElementById("pass").value="";
+  await loadOverview();
+ }catch(e){error.textContent=e.message}
+}
+function logout(){
+ token="";sessionStorage.removeItem("airton_admin_token");
+ document.getElementById("panel").style.display="none";
+ document.getElementById("login").style.display="block";
+}
+async function loadOverview(){
+ try{overview=await request("/api/admin/overview");render()}
+ catch(e){showMessage(e.message);if(/сессия|войдите/i.test(e.message))logout()}
+}
+async function setStatus(status){
+ try{await request("/api/admin/server-status",{method:"POST",body:JSON.stringify({status})});await loadOverview();showMessage("Статус сервера изменён")}
+ catch(e){showMessage(e.message)}
+}
+async function giveTon(){
+ const userId=document.getElementById("giveId").value.trim();
+ const amount=Number(document.getElementById("giveAmount").value);
+ const reason=document.getElementById("giveReason").value.trim();
+ if(!userId||!reason||!Number.isFinite(amount)||amount<=0)return showMessage("Заполни ID, сумму и причину");
+ try{await request("/api/admin/credit",{method:"POST",body:JSON.stringify({userId,amount,reason})});await loadOverview();showMessage("Виртуальный баланс начислен")}
+ catch(e){showMessage(e.message)}
+}
+async function banUser(){
+ const userId=document.getElementById("banId").value.trim();
+ const reason=document.getElementById("banReason").value.trim();
+ if(!userId||!reason)return showMessage("Укажи ID и причину");
+ try{await request("/api/admin/ban",{method:"POST",body:JSON.stringify({userId,reason})});await loadOverview();showMessage("Пользователь заблокирован")}
+ catch(e){showMessage(e.message)}
+}
+async function unbanUser(){
+ const userId=document.getElementById("unbanId").value.trim();
+ if(!userId)return showMessage("Укажи ID");
+ try{await request("/api/admin/unban",{method:"POST",body:JSON.stringify({userId})});await loadOverview();showMessage("Пользователь разблокирован")}
+ catch(e){showMessage(e.message)}
+}
+async function clearLogs(){
+ if(!confirm("Очистить журнал действий на сервере?"))return;
+ try{await request("/api/admin/clear-logs",{method:"POST",body:"{}"});await loadOverview();showMessage("Журнал очищен")}
+ catch(e){showMessage(e.message)}
+}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function render(){
+ if(!overview)return;
+ const status=overview.server.status;
+ const el=document.getElementById("serverStatus");el.textContent=status;
+ el.style.color=status==="ONLINE"?"#62e9a1":status==="OFFLINE"?"#ff596b":"#ffc76b";
+ document.getElementById("serverNote").textContent=overview.server.note||"Текущий режим работы";
+ const users=overview.users||[];
+ document.getElementById("users").innerHTML=users.length?users.map(u=>'<div class="log"><b>ID: '+esc(u.id)+'</b><br>Баланс: '+Number(u.balance||0).toFixed(4)+' виртуальных TON<br>Серверов: '+(u.servers||[]).length+' · '+(u.banned?'ЗАБЛОКИРОВАН':'Активен')+'</div>').join(""):"Пользователей пока нет";
+ const banned=users.filter(u=>u.banned);
+ document.getElementById("bannedList").innerHTML=banned.length?banned.map(u=>'<div class="log"><b>ID: '+esc(u.id)+'</b><br>Причина: '+esc(u.banReason)+'</div>').join(""):"Список пуст";
+ document.getElementById("logs").innerHTML=overview.logs?.length?overview.logs.map(l=>'<div class="log">'+esc(new Date(l.at).toLocaleString("ru-RU"))+' — <b>'+esc(l.action)+'</b><br>'+esc(JSON.stringify(l.details||{}))+'</div>').join(""):"Действий пока нет";
+}
+if(token){
+ document.getElementById("login").style.display="none";
+ document.getElementById("panel").style.display="block";
+ loadOverview();
+}
+</script>
+</body>
+</html>
