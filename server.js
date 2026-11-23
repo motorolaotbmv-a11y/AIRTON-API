@@ -100,7 +100,7 @@ function publicUser(user) {
   };
 }
 function adminAuth(req, res, next) {
-  const token = (req.headers.authorization || "").replace(/^Bearer\\s+/i, "");
+  const token = (req.headers.authorization || "").replace(/^Bearer\s+/i, "");
   const session = sessions.get(token);
   if (!session || session.expiresAt < Date.now()) {
     if (token) sessions.delete(token);
