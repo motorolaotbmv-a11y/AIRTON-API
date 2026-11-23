@@ -43,5 +43,5 @@ $("modal").onclick=e=>{if(e.target===$("modal"))$("modal").classList.remove("sho
 $("confirmModal").onclick=async()=>{const price=Number($("priceInput").value);if(!Number.isFinite(price)||price<.01){toast("Укажи цену от 0.01 TON");return}try{await api("/api/market/"+encodeURIComponent(uid)+"/list",{nftId:pendingNft,price});$("modal").classList.remove("show");toast("NFT выставлен на маркет");await load()}catch(e){toast(e.message)}};
 async function delist(id){try{await api("/api/market/"+encodeURIComponent(uid)+"/delist",{listingId:id});toast("Объявление снято");await load()}catch(e){toast(e.message)}}
 document.querySelectorAll(".tab[data-tab]").forEach(b=>b.addEventListener("click",()=>{tab=b.dataset.tab;render()}));$("search").addEventListener("input",render);$("rarity").addEventListener("change",render);
-load();setInterval(load,15000);
+load();setInterval(()=>{if(document.activeElement!==$("search")&&!$("modal").classList.contains("show"))load()},15000);
 </script></body></html>
