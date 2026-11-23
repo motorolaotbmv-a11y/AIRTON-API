@@ -25,6 +25,33 @@ const TARIFFS = [
 ];
 let tariffs = TARIFFS.map(t => ({ ...t }));
 
+const NFT_CATALOG = [
+  { type:"snooper", name:"Snooper", rarity:"Обычный", icon:"🐶", art:"linear-gradient(145deg,#1c3d47,#72c9b7)" },
+  { type:"berry", name:"Berry Box", rarity:"Обычный", icon:"🫐", art:"linear-gradient(145deg,#301a56,#9b78ed)" },
+  { type:"candle", name:"Magic Candle", rarity:"Обычный", icon:"🕯️", art:"linear-gradient(145deg,#4c2940,#ff9d9d)" },
+  { type:"heart", name:"Heart Locket", rarity:"Редкий", icon:"💝", art:"linear-gradient(145deg,#6b193c,#ff6f9f)" },
+  { type:"ring", name:"Moon Ring", rarity:"Редкий", icon:"💍", art:"linear-gradient(145deg,#123d59,#69c8e8)" },
+  { type:"bunny", name:"Jelly Bunny", rarity:"Редкий", icon:"🐰", art:"linear-gradient(145deg,#244d43,#8fe3bb)" },
+  { type:"pepe", name:"Plush Friend", rarity:"Эпический", icon:"🐸", art:"linear-gradient(145deg,#163f36,#67db9c)" },
+  { type:"rocket", name:"Rocket", rarity:"Эпический", icon:"🚀", art:"linear-gradient(145deg,#33245f,#b59aff)" },
+  { type:"diamond", name:"Blue Diamond", rarity:"Эпический", icon:"💎", art:"linear-gradient(145deg,#123d67,#7ce4ff)" },
+  { type:"crown", name:"Golden Crown", rarity:"Легендарный", icon:"👑", art:"linear-gradient(145deg,#63400c,#ffd56d)" },
+  { type:"trophy", name:"Golden Trophy", rarity:"Легендарный", icon:"🏆", art:"linear-gradient(145deg,#5c3510,#ffca65)" },
+  { type:"planet", name:"Mini Planet", rarity:"Легендарный", icon:"🪐", art:"linear-gradient(145deg,#34205d,#bba1ff)" }
+];
+const marketListings = [];
+const marketSales = [];
+const MARKET_FEE_PERCENT = 5;
+function createNft(type) {
+  const gift = NFT_CATALOG.find(item => item.type === type) || NFT_CATALOG[0];
+  return {
+    id: crypto.randomUUID(), type: gift.type, name: gift.name, rarity: gift.rarity,
+    icon: gift.icon, art: gift.art, serial: Math.floor(1000 + Math.random() * 8999),
+    mintedAt: new Date().toISOString()
+  };
+}
+
+
 app.disable("x-powered-by");
 app.use((req, res, next) => {
   res.setHeader("X-Content-Type-Options", "nosniff");
@@ -39,7 +66,7 @@ app.use((req, res, next) => {
 app.use(express.json({ limit: "32kb" }));
 async function persistState() {
   if (!pool) return;
-  const snapshot = { users: [...users.entries()], stocks: [...stocks], tariffs: tariffs.map(t => ({ ...t })), server: { ...server }, logs: [...logs] };
+  const snapshot = { users: [...users.entries()], stocks: [...stocks], tariffs: tariffs.map(t => ({ ...t })), server: { ...server }, logs: [...logs], marketListings: [...marketListings], marketSales: marketSales.slice(0, 100) };
   persistQueue = persistQueue.then(() => pool.query(
     "INSERT INTO airton_state (id, state, updated_at) VALUES (1, $1::jsonb, NOW()) ON CONFLICT (id) DO UPDATE SET state = EXCLUDED.state, updated_at = NOW()",
     [JSON.stringify(snapshot)]
@@ -59,6 +86,8 @@ async function initDatabase() {
     if (Array.isArray(state.tariffs) && state.tariffs.length === tariffs.length) tariffs.splice(0, tariffs.length, ...state.tariffs.map(t => ({ ...t })));
     if (state.server && typeof state.server === "object") Object.assign(server, state.server);
     logs.splice(0, logs.length, ...(state.logs || []).slice(0, 300));
+    marketListings.splice(0, marketListings.length, ...(state.marketListings || []));
+    marketSales.splice(0, marketSales.length, ...(state.marketSales || []).slice(0, 100));
   } else { await persistState(); }
   console.log("AIRTON PostgreSQL storage ready");
 }
@@ -66,7 +95,7 @@ async function initDatabase() {
 app.use((req, res, next) => {
   const sendJson = res.json.bind(res);
   res.json = (body) => {
-    const shouldPersist = Boolean(pool) && ((req.method === "POST" && req.path.startsWith("/api/")) || (req.method === "GET" && (req.path.startsWith("/api/user/") || req.path === "/api/admin/overview")));
+    const shouldPersist = Boolean(pool) && ((req.method === "POST" && req.path.startsWith("/api/")) || (req.method === "GET" && (req.path.startsWith("/api/user/") || req.path.startsWith("/api/market/") || req.path === "/api/admin/overview")));
     if (!shouldPersist) return sendJson(body);
     persistState().then(() => sendJson(body)).catch(error => {
       console.error("AIRTON database save failed:", error.message);
@@ -101,7 +130,7 @@ function ensureUser(id) {
     users.set(id, {
       id, balance: 3, earned: 0, servers: [], missions: [false, false],
       miningEnabled: false, lastTick: Date.now(), banned: false, banReason: "",
-      starterBonusGranted: true
+      starterBonusGranted: true, nfts: [], nftStarterGranted: false
     });
   }
   const user = users.get(id);
@@ -113,6 +142,11 @@ function ensureUser(id) {
       (!Array.isArray(user.missions) || user.missions.every(value => !value));
     if (untouched) user.balance = 3;
     user.starterBonusGranted = true;
+  }
+  if (!Array.isArray(user.nfts)) user.nfts = [];
+  if (user.nftStarterGranted !== true) {
+    user.nfts.push(createNft("snooper"), createNft("heart"), createNft("diamond"));
+    user.nftStarterGranted = true;
   }
   return user;
 }
@@ -229,6 +263,79 @@ app.post("/api/user/:id/rent", (req, res) => {
   log("server_rented", { userId: user.id, tariffIndex: index, price: tariff.price });
   res.json({ ok: true, user: publicUser(user), config: { tariffs: tariffs.map((t, i) => ({ ...t, stock: stocks[i] })) } });
 });
+
+app.get("/api/market/:id", (req, res) => {
+  const user = getUserFromParam(req, res);
+  if (!user) return;
+  settle(user);
+  res.json({
+    ok: true,
+    user: { id: user.id, balance: user.balance, nfts: user.nfts || [], banned: user.banned },
+    listings: marketListings.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 100),
+    sales: marketSales.slice(0, 50),
+    feePercent: MARKET_FEE_PERCENT,
+    catalog: NFT_CATALOG
+  });
+});
+app.post("/api/market/:id/list", (req, res) => {
+  const user = getUserFromParam(req, res);
+  if (!user) return;
+  settle(user);
+  if (user.banned) return res.status(403).json({ ok: false, error: "Аккаунт заблокирован" });
+  const nftId = cleanText(req.body?.nftId, 80);
+  const price = Number(req.body?.price);
+  if (!Number.isFinite(price) || price < 0.01 || price > 1000000) {
+    return res.status(400).json({ ok: false, error: "Цена должна быть от 0.01 до 1 000 000 виртуальных TON" });
+  }
+  const index = (user.nfts || []).findIndex(item => item.id === nftId);
+  if (index < 0) return res.status(404).json({ ok: false, error: "NFT не найден в инвентаре" });
+  if (marketListings.some(item => item.nft.id === nftId)) return res.status(409).json({ ok: false, error: "Этот NFT уже выставлен" });
+  const nft = user.nfts.splice(index, 1)[0];
+  const listing = { id: crypto.randomUUID(), sellerId: user.id, nft, price: Number(price.toFixed(4)), createdAt: new Date().toISOString() };
+  marketListings.unshift(listing);
+  log("market_listed", { userId: user.id, nftId, price: listing.price });
+  res.json({ ok: true, listing, balance: user.balance, nfts: user.nfts });
+});
+app.post("/api/market/:id/buy", (req, res) => {
+  const buyer = getUserFromParam(req, res);
+  if (!buyer) return;
+  settle(buyer);
+  if (buyer.banned) return res.status(403).json({ ok: false, error: "Аккаунт заблокирован" });
+  const listingId = cleanText(req.body?.listingId, 80);
+  const index = marketListings.findIndex(item => item.id === listingId);
+  if (index < 0) return res.status(404).json({ ok: false, error: "Объявление уже недоступно" });
+  const listing = marketListings[index];
+  if (listing.sellerId === buyer.id) return res.status(409).json({ ok: false, error: "Нельзя купить собственный NFT" });
+  if (buyer.balance < listing.price) return res.status(409).json({ ok: false, error: "Недостаточно виртуальных TON" });
+  const seller = ensureUser(listing.sellerId);
+  settle(seller);
+  const fee = Number((listing.price * MARKET_FEE_PERCENT / 100).toFixed(4));
+  const sellerReceives = Number((listing.price - fee).toFixed(4));
+  buyer.balance = Number((buyer.balance - listing.price).toFixed(10));
+  seller.balance = Number((seller.balance + sellerReceives).toFixed(10));
+  buyer.nfts.push(listing.nft);
+  marketListings.splice(index, 1);
+  const sale = {
+    id: crypto.randomUUID(), nft: listing.nft, price: listing.price, fee,
+    sellerId: seller.id, buyerId: buyer.id, soldAt: new Date().toISOString()
+  };
+  marketSales.unshift(sale);
+  if (marketSales.length > 100) marketSales.length = 100;
+  log("market_sold", { buyerId: buyer.id, sellerId: seller.id, nftId: listing.nft.id, price: listing.price, fee });
+  res.json({ ok: true, balance: buyer.balance, nfts: buyer.nfts, sale });
+});
+app.post("/api/market/:id/delist", (req, res) => {
+  const user = getUserFromParam(req, res);
+  if (!user) return;
+  const listingId = cleanText(req.body?.listingId, 80);
+  const index = marketListings.findIndex(item => item.id === listingId && item.sellerId === user.id);
+  if (index < 0) return res.status(404).json({ ok: false, error: "Ваше объявление не найдено" });
+  const [listing] = marketListings.splice(index, 1);
+  user.nfts.push(listing.nft);
+  log("market_delisted", { userId: user.id, nftId: listing.nft.id });
+  res.json({ ok: true, nfts: user.nfts });
+});
+
 app.post("/api/user/:id/mission", (req, res) => {
   const user = getUserFromParam(req, res);
   if (!user) return;
