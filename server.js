@@ -97,11 +97,22 @@ function validId(value) {
 function ensureUser(id) {
   if (!users.has(id)) {
     users.set(id, {
-      id, balance: 0, earned: 0, servers: [], missions: [false, false],
-      miningEnabled: false, lastTick: Date.now(), banned: false, banReason: ""
+      id, balance: 3, earned: 0, servers: [], missions: [false, false],
+      miningEnabled: false, lastTick: Date.now(), banned: false, banReason: "",
+      starterBonusGranted: true
     });
   }
-  return users.get(id);
+  const user = users.get(id);
+  // One-time migration: give 3 virtual TON to existing untouched accounts.
+  if (user.starterBonusGranted !== true) {
+    const untouched = Number(user.balance || 0) === 0 &&
+      Number(user.earned || 0) === 0 &&
+      (!Array.isArray(user.servers) || user.servers.length === 0) &&
+      (!Array.isArray(user.missions) || user.missions.every(value => !value));
+    if (untouched) user.balance = 3;
+    user.starterBonusGranted = true;
+  }
+  return user;
 }
 function activeServers(user, now = Date.now()) {
   return user.servers.filter(s => s.end > now);
