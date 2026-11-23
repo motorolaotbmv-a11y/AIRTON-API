@@ -23,6 +23,7 @@ const TARIFFS = [
   { price: 75, income: null, stock: 30, power: 250 },
   { price: 105, income: null, stock: 10, power: 350 }
 ];
+let tariffs = TARIFFS.map(t => ({ ...t }));
 
 app.disable("x-powered-by");
 app.use((req, res, next) => {
@@ -38,7 +39,7 @@ app.use((req, res, next) => {
 app.use(express.json({ limit: "32kb" }));
 async function persistState() {
   if (!pool) return;
-  const snapshot = { users: [...users.entries()], stocks: [...stocks], server: { ...server }, logs: [...logs] };
+  const snapshot = { users: [...users.entries()], stocks: [...stocks], tariffs: tariffs.map(t => ({ ...t })), server: { ...server }, logs: [...logs] };
   persistQueue = persistQueue.then(() => pool.query(
     "INSERT INTO airton_state (id, state, updated_at) VALUES (1, $1::jsonb, NOW()) ON CONFLICT (id) DO UPDATE SET state = EXCLUDED.state, updated_at = NOW()",
     [JSON.stringify(snapshot)]
@@ -55,6 +56,7 @@ async function initDatabase() {
     users.clear();
     for (const entry of (state.users || [])) users.set(entry[0], entry[1]);
     if (Array.isArray(state.stocks) && state.stocks.length === stocks.length) stocks.splice(0, stocks.length, ...state.stocks);
+    if (Array.isArray(state.tariffs) && state.tariffs.length === tariffs.length) tariffs.splice(0, tariffs.length, ...state.tariffs.map(t => ({ ...t })));
     if (state.server && typeof state.server === "object") Object.assign(server, state.server);
     logs.splice(0, logs.length, ...(state.logs || []).slice(0, 300));
   } else { await persistState(); }
@@ -179,7 +181,7 @@ app.get("/api/config", (_req, res) => {
   res.json({
     ok: true, app: "AIRTON", serverStatus: server.status, serverNote: server.note,
     mode: "demo", realTonTransfers: false, persistentStorage: Boolean(pool),
-    tariffs: TARIFFS.map((t, i) => ({ ...t, stock: stocks[i] }))
+    tariffs: tariffs.map((t, i) => ({ ...t, stock: stocks[i] }))
   });
 });
 app.get("/api/user/:id", (req, res) => {
@@ -211,10 +213,10 @@ app.post("/api/user/:id/rent", (req, res) => {
   if (user.banned) return res.status(403).json({ ok: false, error: "Аккаунт заблокирован" });
   if (server.status !== "ONLINE") return res.status(409).json({ ok: false, error: "Аренда временно недоступна" });
   const index = Number(req.body?.tariffIndex);
-  if (!Number.isInteger(index) || index < 0 || index >= TARIFFS.length) {
+  if (!Number.isInteger(index) || index < 0 || index >= tariffs.length) {
     return res.status(400).json({ ok: false, error: "Неизвестный тариф" });
   }
-  const tariff = TARIFFS[index];
+  const tariff = tariffs[index];
   if (tariff.income === null) return res.status(409).json({ ok: false, error: "Этот тариф пока настраивается" });
   if (stocks[index] <= 0) return res.status(409).json({ ok: false, error: "Серверы закончились" });
   if (user.balance < tariff.price) return res.status(409).json({ ok: false, error: "Недостаточно виртуального баланса" });
@@ -225,7 +227,7 @@ app.post("/api/user/:id/rent", (req, res) => {
     power: tariff.power, end: Date.now() + RENT_MS
   });
   log("server_rented", { userId: user.id, tariffIndex: index, price: tariff.price });
-  res.json({ ok: true, user: publicUser(user), config: { tariffs: TARIFFS.map((t, i) => ({ ...t, stock: stocks[i] })) } });
+  res.json({ ok: true, user: publicUser(user), config: { tariffs: tariffs.map((t, i) => ({ ...t, stock: stocks[i] })) } });
 });
 app.post("/api/user/:id/mission", (req, res) => {
   const user = getUserFromParam(req, res);
@@ -271,7 +273,7 @@ app.post("/api/admin/login", (req, res) => {
 });
 app.get("/api/admin/overview", adminAuth, (_req, res) => {
   const allUsers = [...users.values()].map(user => publicUser(user));
-  res.json({ ok: true, server, users: allUsers, logs: logs.slice(0, 100), storage: pool ? "postgresql" : "memory-only" });
+  res.json({ ok: true, server, users: allUsers, tariffs: tariffs.map((t, i) => ({ ...t, stock: stocks[i] })), logs: logs.slice(0, 100), storage: pool ? "postgresql" : "memory-only" });
 });
 app.post("/api/admin/server-status", adminAuth, (req, res) => {
   const status = String(req.body?.status || "").toUpperCase();
@@ -282,6 +284,27 @@ app.post("/api/admin/server-status", adminAuth, (req, res) => {
   server.note = cleanText(req.body?.note, 180);
   log("server_status_changed", { status, note: server.note });
   res.json({ ok: true, server });
+});
+app.post("/api/admin/tariff", adminAuth, (req, res) => {
+  const index = Number(req.body?.index);
+  const price = Number(req.body?.price);
+  const incomeRaw = req.body?.income;
+  const income = incomeRaw === "" || incomeRaw === null ? null : Number(incomeRaw);
+  const power = Number(req.body?.power);
+  const stock = Number(req.body?.stock);
+  if (!Number.isInteger(index) || index < 0 || index >= tariffs.length) {
+    return res.status(400).json({ ok: false, error: "Неизвестный тариф" });
+  }
+  if (!Number.isFinite(price) || price <= 0 || price > 1000000 ||
+      (income !== null && (!Number.isFinite(income) || income <= 0 || income > 1000000)) ||
+      !Number.isFinite(power) || power <= 0 || power > 1000000 ||
+      !Number.isInteger(stock) || stock < 0 || stock > 1000000) {
+    return res.status(400).json({ ok: false, error: "Проверь цену, доход, мощность и остаток" });
+  }
+  tariffs[index] = { ...tariffs[index], price, income, power };
+  stocks[index] = stock;
+  log("admin_tariff_updated", { index, price, income, power, stock });
+  res.json({ ok: true, tariffs: tariffs.map((t, i) => ({ ...t, stock: stocks[i] })) });
 });
 app.post("/api/admin/credit", adminAuth, (req, res) => {
   const userId = cleanText(req.body?.userId, 80);
