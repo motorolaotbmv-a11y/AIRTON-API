@@ -32,7 +32,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/artisan_brick.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/artisan_brick.webp",
     "collectionSlug": "artisanbrick"
   },
   {
@@ -41,7 +41,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/astral_shard.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/astral_shard.webp",
     "collectionSlug": "astralshard"
   },
   {
@@ -50,7 +50,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/bday_candle.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/bday_candle.webp",
     "collectionSlug": "bdaycandle"
   },
   {
@@ -59,7 +59,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/berry_box.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/berry_box.webp",
     "collectionSlug": "berrybox"
   },
   {
@@ -68,7 +68,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/big_year.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/big_year.webp",
     "collectionSlug": "bigyear"
   },
   {
@@ -77,7 +77,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/bling_binky.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/bling_binky.webp",
     "collectionSlug": "blingbinky"
   },
   {
@@ -86,7 +86,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/bonded_ring.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/bonded_ring.webp",
     "collectionSlug": "bondedring"
   },
   {
@@ -95,7 +95,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/bow_tie.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/bow_tie.webp",
     "collectionSlug": "bowtie"
   },
   {
@@ -104,7 +104,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/bunny_muffin.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/bunny_muffin.webp",
     "collectionSlug": "bunnymuffin"
   },
   {
@@ -113,7 +113,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/candy_cane.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/candy_cane.webp",
     "collectionSlug": "candycane"
   },
   {
@@ -122,7 +122,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/clover_pin.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/clover_pin.webp",
     "collectionSlug": "cloverpin"
   },
   {
@@ -131,7 +131,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/cookie_heart.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/cookie_heart.webp",
     "collectionSlug": "cookieheart"
   },
   {
@@ -140,7 +140,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/crystal_ball.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/crystal_ball.webp",
     "collectionSlug": "crystalball"
   },
   {
@@ -149,7 +149,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/cupid_charm.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/cupid_charm.webp",
     "collectionSlug": "cupidcharm"
   },
   {
@@ -158,7 +158,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/desk_calendar.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/desk_calendar.webp",
     "collectionSlug": "deskcalendar"
   },
   {
@@ -167,7 +167,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/diamond_ring.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/diamond_ring.webp",
     "collectionSlug": "diamondring"
   },
   {
@@ -176,7 +176,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/durovs_cap.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/durovs_cap.webp",
     "collectionSlug": "durovscap"
   },
   {
@@ -185,7 +185,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/easter_egg.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/easter_egg.webp",
     "collectionSlug": "easteregg"
   },
   {
@@ -194,7 +194,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/electric_skull.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/electric_skull.webp",
     "collectionSlug": "electricskull"
   },
   {
@@ -203,7 +203,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/eternal_candle.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/eternal_candle.webp",
     "collectionSlug": "eternalcandle"
   },
   {
@@ -212,7 +212,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/eternal_rose.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/eternal_rose.webp",
     "collectionSlug": "eternalrose"
   },
   {
@@ -221,7 +221,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/evil_eye.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/evil_eye.webp",
     "collectionSlug": "evileye"
   },
   {
@@ -230,7 +230,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/faith_amulet.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/faith_amulet.webp",
     "collectionSlug": "faithamulet"
   },
   {
@@ -239,7 +239,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/flying_broom.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/flying_broom.webp",
     "collectionSlug": "flyingbroom"
   },
   {
@@ -248,7 +248,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/fresh_socks.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/fresh_socks.webp",
     "collectionSlug": "freshsocks"
   },
   {
@@ -257,7 +257,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/gem_signet.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/gem_signet.webp",
     "collectionSlug": "gemsignet"
   },
   {
@@ -266,7 +266,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/genie_lamp.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/genie_lamp.webp",
     "collectionSlug": "genielamp"
   },
   {
@@ -275,7 +275,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/ginger_cookie.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/ginger_cookie.webp",
     "collectionSlug": "gingercookie"
   },
   {
@@ -284,7 +284,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/hanging_star.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/hanging_star.webp",
     "collectionSlug": "hangingstar"
   },
   {
@@ -293,7 +293,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/happy_brownie.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/happy_brownie.webp",
     "collectionSlug": "happybrownie"
   },
   {
@@ -302,7 +302,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/heart_locket.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/heart_locket.webp",
     "collectionSlug": "heartlocket"
   },
   {
@@ -311,7 +311,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/heroic_helmet.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/heroic_helmet.webp",
     "collectionSlug": "heroichelmet"
   },
   {
@@ -320,7 +320,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/hex_pot.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/hex_pot.webp",
     "collectionSlug": "hexpot"
   },
   {
@@ -329,7 +329,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/holiday_drink.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/holiday_drink.webp",
     "collectionSlug": "holidaydrink"
   },
   {
@@ -338,7 +338,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/homemade_cake.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/homemade_cake.webp",
     "collectionSlug": "homemadecake"
   },
   {
@@ -347,7 +347,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/hypno_lollipop.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/hypno_lollipop.webp",
     "collectionSlug": "hypnolollipop"
   },
   {
@@ -356,7 +356,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/ice_cream.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/ice_cream.webp",
     "collectionSlug": "icecream"
   },
   {
@@ -365,7 +365,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/input_key.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/input_key.webp",
     "collectionSlug": "inputkey"
   },
   {
@@ -374,7 +374,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/instant_ramen.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/instant_ramen.webp",
     "collectionSlug": "instantramen"
   },
   {
@@ -383,7 +383,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/ion_gem.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/ion_gem.webp",
     "collectionSlug": "iongem"
   },
   {
@@ -392,7 +392,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/ionic_dryer.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/ionic_dryer.webp",
     "collectionSlug": "ionicdryer"
   },
   {
@@ -401,7 +401,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/jackinthebox.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/jackinthebox.webp",
     "collectionSlug": "jackinthebox"
   },
   {
@@ -410,7 +410,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/jelly_bunny.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/jelly_bunny.webp",
     "collectionSlug": "jellybunny"
   },
   {
@@ -419,7 +419,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/jester_hat.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/jester_hat.webp",
     "collectionSlug": "jesterhat"
   },
   {
@@ -428,7 +428,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/jingle_bells.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/jingle_bells.webp",
     "collectionSlug": "jinglebells"
   },
   {
@@ -437,7 +437,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/jolly_chimp.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/jolly_chimp.webp",
     "collectionSlug": "jollychimp"
   },
   {
@@ -446,7 +446,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/joyful_bundle.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/joyful_bundle.webp",
     "collectionSlug": "joyfulbundle"
   },
   {
@@ -455,7 +455,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/khabibs_papakha.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/khabibs_papakha.webp",
     "collectionSlug": "khabibspapakha"
   },
   {
@@ -464,7 +464,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/kissed_frog.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/kissed_frog.webp",
     "collectionSlug": "kissedfrog"
   },
   {
@@ -473,7 +473,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/light_sword.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/light_sword.webp",
     "collectionSlug": "lightsword"
   },
   {
@@ -482,7 +482,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/lol_pop.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/lol_pop.webp",
     "collectionSlug": "lolpop"
   },
   {
@@ -491,7 +491,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/loot_bag.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/loot_bag.webp",
     "collectionSlug": "lootbag"
   },
   {
@@ -500,7 +500,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/love_candle.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/love_candle.webp",
     "collectionSlug": "lovecandle"
   },
   {
@@ -509,7 +509,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/love_potion.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/love_potion.webp",
     "collectionSlug": "lovepotion"
   },
   {
@@ -518,7 +518,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/low_rider.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/low_rider.webp",
     "collectionSlug": "lowrider"
   },
   {
@@ -527,7 +527,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/lunar_snake.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/lunar_snake.webp",
     "collectionSlug": "lunarsnake"
   },
   {
@@ -536,7 +536,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/lush_bouquet.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/lush_bouquet.webp",
     "collectionSlug": "lushbouquet"
   },
   {
@@ -545,7 +545,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/mad_pumpkin.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/mad_pumpkin.webp",
     "collectionSlug": "madpumpkin"
   },
   {
@@ -554,7 +554,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/magic_potion.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/magic_potion.webp",
     "collectionSlug": "magicpotion"
   },
   {
@@ -563,7 +563,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/mighty_arm.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/mighty_arm.webp",
     "collectionSlug": "mightyarm"
   },
   {
@@ -572,7 +572,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/mini_oscar.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/mini_oscar.webp",
     "collectionSlug": "minioscar"
   },
   {
@@ -581,7 +581,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/money_pot.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/money_pot.webp",
     "collectionSlug": "moneypot"
   },
   {
@@ -590,7 +590,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/moon_pendant.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/moon_pendant.webp",
     "collectionSlug": "moonpendant"
   },
   {
@@ -599,7 +599,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/mousse_cake.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/mousse_cake.webp",
     "collectionSlug": "moussecake"
   },
   {
@@ -608,7 +608,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/nail_bracelet.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/nail_bracelet.webp",
     "collectionSlug": "nailbracelet"
   },
   {
@@ -617,7 +617,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/neko_helmet.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/neko_helmet.webp",
     "collectionSlug": "nekohelmet"
   },
   {
@@ -626,7 +626,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/party_sparkler.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/party_sparkler.webp",
     "collectionSlug": "partysparkler"
   },
   {
@@ -635,7 +635,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/perfume_bottle.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/perfume_bottle.webp",
     "collectionSlug": "perfumebottle"
   },
   {
@@ -644,7 +644,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/pet_snake.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/pet_snake.webp",
     "collectionSlug": "petsnake"
   },
   {
@@ -653,7 +653,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/plush_pepe.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/plush_pepe.webp",
     "collectionSlug": "plushpepe"
   },
   {
@@ -662,7 +662,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/precious_peach.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/precious_peach.webp",
     "collectionSlug": "preciouspeach"
   },
   {
@@ -671,7 +671,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/pretty_posy.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/pretty_posy.webp",
     "collectionSlug": "prettyposy"
   },
   {
@@ -680,7 +680,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/record_player.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/record_player.webp",
     "collectionSlug": "recordplayer"
   },
   {
@@ -689,7 +689,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/restless_jar.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/restless_jar.webp",
     "collectionSlug": "restlessjar"
   },
   {
@@ -698,7 +698,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/sakura_flower.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/sakura_flower.webp",
     "collectionSlug": "sakuraflower"
   },
   {
@@ -707,7 +707,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/santa_hat.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/santa_hat.webp",
     "collectionSlug": "santahat"
   },
   {
@@ -716,7 +716,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/scared_cat.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/scared_cat.webp",
     "collectionSlug": "scaredcat"
   },
   {
@@ -725,7 +725,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/sharp_tongue.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/sharp_tongue.webp",
     "collectionSlug": "sharptongue"
   },
   {
@@ -734,7 +734,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/signet_ring.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/signet_ring.webp",
     "collectionSlug": "signetring"
   },
   {
@@ -743,7 +743,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/skull_flower.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/skull_flower.webp",
     "collectionSlug": "skullflower"
   },
   {
@@ -752,7 +752,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/sky_stilettos.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/sky_stilettos.webp",
     "collectionSlug": "skystilettos"
   },
   {
@@ -761,7 +761,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/sleigh_bell.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/sleigh_bell.webp",
     "collectionSlug": "sleighbell"
   },
   {
@@ -770,7 +770,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/snake_box.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/snake_box.webp",
     "collectionSlug": "snakebox"
   },
   {
@@ -779,7 +779,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/snoop_cigar.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/snoop_cigar.webp",
     "collectionSlug": "snoopcigar"
   },
   {
@@ -788,7 +788,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/snoop_dogg.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/snoop_dogg.webp",
     "collectionSlug": "snoopdogg"
   },
   {
@@ -797,7 +797,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/snow_globe.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/snow_globe.webp",
     "collectionSlug": "snowglobe"
   },
   {
@@ -806,7 +806,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/snow_mittens.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/snow_mittens.webp",
     "collectionSlug": "snowmittens"
   },
   {
@@ -815,7 +815,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/spiced_wine.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/spiced_wine.webp",
     "collectionSlug": "spicedwine"
   },
   {
@@ -824,7 +824,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/spring_basket.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/spring_basket.webp",
     "collectionSlug": "springbasket"
   },
   {
@@ -833,7 +833,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/spy_agaric.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/spy_agaric.webp",
     "collectionSlug": "spyagaric"
   },
   {
@@ -842,7 +842,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/star_notepad.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/star_notepad.webp",
     "collectionSlug": "starnotepad"
   },
   {
@@ -851,7 +851,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/stellar_rocket.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/stellar_rocket.webp",
     "collectionSlug": "stellarrocket"
   },
   {
@@ -860,7 +860,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/swag_bag.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/swag_bag.webp",
     "collectionSlug": "swagbag"
   },
   {
@@ -869,7 +869,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/swiss_watch.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/swiss_watch.webp",
     "collectionSlug": "swisswatch"
   },
   {
@@ -878,7 +878,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/tama_gadget.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/tama_gadget.webp",
     "collectionSlug": "tamagadget"
   },
   {
@@ -887,7 +887,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/top_hat.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/top_hat.webp",
     "collectionSlug": "tophat"
   },
   {
@@ -896,7 +896,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/toy_bear.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/toy_bear.webp",
     "collectionSlug": "toybear"
   },
   {
@@ -905,7 +905,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/trapped_heart.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/trapped_heart.webp",
     "collectionSlug": "trappedheart"
   },
   {
@@ -914,7 +914,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/ufc_strike.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/ufc_strike.webp",
     "collectionSlug": "ufcstrike"
   },
   {
@@ -923,7 +923,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/valentine_box.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/valentine_box.webp",
     "collectionSlug": "valentinebox"
   },
   {
@@ -932,7 +932,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/vintage_cigar.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/vintage_cigar.webp",
     "collectionSlug": "vintagecigar"
   },
   {
@@ -941,7 +941,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/voodoo_doll.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/voodoo_doll.webp",
     "collectionSlug": "voodoodoll"
   },
   {
@@ -950,7 +950,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/westside_sign.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/westside_sign.webp",
     "collectionSlug": "westsidesign"
   },
   {
@@ -959,7 +959,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/whip_cupcake.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/whip_cupcake.webp",
     "collectionSlug": "whipcupcake"
   },
   {
@@ -968,7 +968,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/winter_wreath.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/winter_wreath.webp",
     "collectionSlug": "winterwreath"
   },
   {
@@ -977,7 +977,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/witch_hat.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/witch_hat.webp",
     "collectionSlug": "witchhat"
   },
   {
@@ -986,7 +986,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/xmas_stocking.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/xmas_stocking.webp",
     "collectionSlug": "xmasstocking"
   },
   {
@@ -995,7 +995,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/timeless_book.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/timeless_book.webp",
     "collectionSlug": "timelessbook"
   },
   {
@@ -1004,7 +1004,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/vice_cream.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/vice_cream.webp",
     "collectionSlug": "vicecream"
   },
   {
@@ -1013,7 +1013,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/victory_medal.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/victory_medal.webp",
     "collectionSlug": "victorymedal"
   },
   {
@@ -1022,7 +1022,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/pool_float.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/pool_float.webp",
     "collectionSlug": "poolfloat"
   },
   {
@@ -1031,7 +1031,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/surge_board.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/surge_board.webp",
     "collectionSlug": "surgeboard"
   },
   {
@@ -1040,7 +1040,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/chill_flame.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/chill_flame.webp",
     "collectionSlug": "chillflame"
   },
   {
@@ -1049,7 +1049,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/mood_pack.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/mood_pack.webp",
     "collectionSlug": "moodpack"
   },
   {
@@ -1058,7 +1058,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/rare_bird.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/rare_bird.webp",
     "collectionSlug": "rarebird"
   },
   {
@@ -1067,7 +1067,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/durovs_glasses.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/durovs_glasses.webp",
     "collectionSlug": "durovsglasses"
   },
   {
@@ -1076,7 +1076,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/liberty_figure.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/liberty_figure.webp",
     "collectionSlug": "libertyfigure"
   },
   {
@@ -1085,7 +1085,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/triple_meow.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/triple_meow.webp",
     "collectionSlug": "triplemeow"
   },
   {
@@ -1094,7 +1094,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/algorithm_cup.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/algorithm_cup.webp",
     "collectionSlug": "algorithmcup"
   },
   {
@@ -1103,7 +1103,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/intelligence_cup.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/intelligence_cup.webp",
     "collectionSlug": "intelligencecup"
   },
   {
@@ -1112,7 +1112,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/white_gilded.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/white_gilded.webp",
     "collectionSlug": "whitegilded"
   },
   {
@@ -1121,7 +1121,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/the_creation.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/the_creation.webp",
     "collectionSlug": "thecreation"
   },
   {
@@ -1130,7 +1130,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/digital_rain.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/digital_rain.webp",
     "collectionSlug": "digitalrain"
   },
   {
@@ -1139,7 +1139,7 @@ const NFT_CATALOG = [
     "rarity": "Коллекционный",
     "icon": "",
     "art": "",
-    "image": "https://cdn.jsdelivr.net/gh/ssamy2/TG_Photos@main/webp/by_name/ghostface.webp",
+    "image": "https://raw.githubusercontent.com/ssamy2/TG_Photos/main/webp/by_name/ghostface.webp",
     "collectionSlug": "ghostface"
   }
 ];
@@ -1368,15 +1368,20 @@ app.post("/api/user/:id/rent", (req, res) => {
   res.json({ ok: true, user: publicUser(user), config: { tariffs: tariffs.map((t, i) => ({ ...t, stock: stocks[i] })) } });
 });
 
+function marketNftWithImage(nft) {
+  if (!nft) return nft;
+  const gift = NFT_CATALOG.find(item => item.type === nft.type);
+  return { ...nft, image: gift?.image || nft.image || "" };
+}
 app.get("/api/market/:id", (req, res) => {
   const user = getUserFromParam(req, res);
   if (!user) return;
   settle(user);
   res.json({
     ok: true,
-    user: { id: user.id, balance: user.balance, nfts: user.nfts || [], banned: user.banned },
-    listings: marketListings.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 100),
-    sales: marketSales.slice(0, 50),
+    user: { id: user.id, balance: user.balance, nfts: (user.nfts || []).map(marketNftWithImage), banned: user.banned },
+    listings: marketListings.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 100).map(item => ({ ...item, nft: marketNftWithImage(item.nft) })),
+    sales: marketSales.slice(0, 50).map(item => ({ ...item, nft: marketNftWithImage(item.nft) })),
     feePercent: MARKET_FEE_PERCENT,
     catalog: NFT_CATALOG
   });
