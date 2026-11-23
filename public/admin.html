@@ -70,6 +70,10 @@ button:disabled{opacity:.5}
    <button class="red" onclick="setStatus('OFFLINE')">OFFLINE</button>
   </div>
  </div>
+ <div class="card"><h2>Управление тарифами</h2>
+  <p class="small">Изменения сохраняются на сервере и применяются к новым арендам. Доход указан за сутки в игровом режиме.</p>
+  <div id="tariffs"><div class="small">Загрузка тарифов...</div></div>
+ </div>
  <div class="card"><h2>Выдать виртуальные TON</h2>
   <input id="giveId" placeholder="ID пользователя">
   <input id="giveAmount" type="number" min="0.01" step="0.01" placeholder="Количество">
@@ -173,6 +177,21 @@ function fillUser(id){
  document.getElementById("unbanId").value=id;
  showMessage("ID игрока добавлен в поля управления");
 }
+function renderTariffs(){
+ const list=document.getElementById("tariffs");
+ if(!list)return;
+ const tariffs=overview?.tariffs||[];
+ list.innerHTML=tariffs.map((t,i)=>'<div class="user-item"><b>Тариф '+(i+1)+'</b><div class="small">Цена / игровой доход за сутки / мощность / остаток</div><div class="stats" style="margin-top:8px"><div><input id="tariffPrice'+i+'" type="number" min="0.01" step="0.01" value="'+Number(t.price).toString()+'" aria-label="Цена"></div><div><input id="tariffIncome'+i+'" type="number" min="0.01" step="0.01" placeholder="Пусто = отключён" value="'+(t.income==null?'':Number(t.income).toString())+'" aria-label="Доход"></div><div><input id="tariffPower'+i+'" type="number" min="1" step="1" value="'+Number(t.power).toString()+'" aria-label="Мощность"></div><div><input id="tariffStock'+i+'" type="number" min="0" step="1" value="'+Number(t.stock).toString()+'" aria-label="Остаток"></div></div><button style="width:100%;margin-top:6px" onclick="saveTariff('+i+')">СОХРАНИТЬ ТАРИФ '+(i+1)+'</button></div>').join("")||"Тарифы не найдены";
+}
+async function saveTariff(index){
+ const value=id=>document.getElementById(id+index).value.trim();
+ const payload={index,price:value("tariffPrice"),income:value("tariffIncome"),power:value("tariffPower"),stock:value("tariffStock")};
+ try{
+  await request("/api/admin/tariff",{method:"POST",body:JSON.stringify(payload)});
+  await loadOverview();
+  showMessage("Тариф "+(index+1)+" сохранён");
+ }catch(e){showMessage(e.message)}
+}
 function render(){
  if(!overview)return;
  const status=overview.server.status;
@@ -189,6 +208,7 @@ function render(){
  document.getElementById("statBalance").textContent=totalBalance.toFixed(2)+" TON";
  document.getElementById("storageStatus").textContent="Хранилище: "+(overview.storage==="postgresql"?"PostgreSQL":"только память");
  renderUsers();
+ renderTariffs();
  const banned=users.filter(u=>u.banned);
  document.getElementById("bannedList").innerHTML=banned.length?banned.map(u=>'<div class="log"><b>ID: '+esc(u.id)+'</b><br>Причина: '+esc(u.banReason)+'</div>').join(""):"Список пуст";
  document.getElementById("logs").innerHTML=overview.logs?.length?overview.logs.map(l=>'<div class="log">'+esc(new Date(l.at).toLocaleString("ru-RU"))+' — <b>'+esc(l.action)+'</b><br>'+esc(JSON.stringify(l.details||{}))+'</div>').join(""):"Действий пока нет";
