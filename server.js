@@ -1,6 +1,10 @@
 const express = require("express");
 const crypto = require("node:crypto");
 const path = require("node:path");
+const { Pool } = require("pg");
+
+const pool = process.env.DATABASE_URL ? new Pool({ connectionString: process.env.DATABASE_URL }) : null;
+let persistQueue = Promise.resolve();
 
 const app = express();
 const PORT = Number(process.env.PORT || 3000);
@@ -32,8 +36,47 @@ app.use((req, res, next) => {
   next();
 });
 app.use(express.json({ limit: "32kb" }));
+async function persistState() {
+  if (!pool) return;
+  const snapshot = { users: [...users.entries()], stocks: [...stocks], server: { ...server }, logs: [...logs] };
+  persistQueue = persistQueue.then(() => pool.query(
+    "INSERT INTO airton_state (id, state, updated_at) VALUES (1, $1::jsonb, NOW()) ON CONFLICT (id) DO UPDATE SET state = EXCLUDED.state, updated_at = NOW()",
+    [JSON.stringify(snapshot)]
+  ));
+  return persistQueue;
+}
 
-// Demo-only memory storage. All data resets when the free service restarts.
+async function initDatabase() {
+  if (!pool) { console.warn("DATABASE_URL is missing; AIRTON is running without persistent storage"); return; }
+  await pool.query("CREATE TABLE IF NOT EXISTS airton_state (id SMALLINT PRIMARY KEY CHECK (id = 1), state JSONB NOT NULL, updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW())");
+  const result = await pool.query("SELECT state FROM airton_state WHERE id = 1");
+  if (result.rows.length) {
+    const state = result.rows[0].state;
+    users.clear();
+    for (const entry of (state.users || [])) users.set(entry[0], entry[1]);
+    if (Array.isArray(state.stocks) && state.stocks.length === stocks.length) stocks.splice(0, stocks.length, ...state.stocks);
+    if (state.server && typeof state.server === "object") Object.assign(server, state.server);
+    logs.splice(0, logs.length, ...(state.logs || []).slice(0, 300));
+  } else { await persistState(); }
+  console.log("AIRTON PostgreSQL storage ready");
+}
+
+app.use((req, res, next) => {
+  const sendJson = res.json.bind(res);
+  res.json = (body) => {
+    const shouldPersist = Boolean(pool) && ((req.method === "POST" && req.path.startsWith("/api/")) || (req.method === "GET" && (req.path.startsWith("/api/user/") || req.path === "/api/admin/overview")));
+    if (!shouldPersist) return sendJson(body);
+    persistState().then(() => sendJson(body)).catch(error => {
+      console.error("AIRTON database save failed:", error.message);
+      sendJson({ ok: false, error: "Не удалось сохранить данные. Повторите запрос" });
+    });
+    return res;
+  };
+  next();
+});
+
+
+// Runtime cache backed by PostgreSQL when DATABASE_URL is configured.
 const sessions = new Map();
 const users = new Map();
 const logs = [];
@@ -124,7 +167,7 @@ app.get("/health", (_req, res) => {
 app.get("/api/config", (_req, res) => {
   res.json({
     ok: true, app: "AIRTON", serverStatus: server.status, serverNote: server.note,
-    mode: "demo", realTonTransfers: false, persistentStorage: false,
+    mode: "demo", realTonTransfers: false, persistentStorage: Boolean(pool),
     tariffs: TARIFFS.map((t, i) => ({ ...t, stock: stocks[i] }))
   });
 });
@@ -217,7 +260,7 @@ app.post("/api/admin/login", (req, res) => {
 });
 app.get("/api/admin/overview", adminAuth, (_req, res) => {
   const allUsers = [...users.values()].map(user => publicUser(user));
-  res.json({ ok: true, server, users: allUsers, logs: logs.slice(0, 100), storage: "memory-only" });
+  res.json({ ok: true, server, users: allUsers, logs: logs.slice(0, 100), storage: pool ? "postgresql" : "memory-only" });
 });
 app.post("/api/admin/server-status", adminAuth, (req, res) => {
   const status = String(req.body?.status || "").toUpperCase();
@@ -279,4 +322,6 @@ app.use((err, _req, res, _next) => {
   if (err instanceof SyntaxError) return res.status(400).json({ ok: false, error: "Некорректный JSON" });
   res.status(500).json({ ok: false, error: "Внутренняя ошибка сервера" });
 });
-app.listen(PORT, "0.0.0.0", () => console.log("AIRTON-API listening on " + PORT));
+initDatabase()
+  .then(() => app.listen(PORT, "0.0.0.0", () => console.log("AIRTON-API listening on " + PORT)))
+  .catch(error => { console.error("AIRTON database initialization failed:", error); process.exit(1); });
